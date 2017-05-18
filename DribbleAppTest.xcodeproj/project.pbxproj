@@ -1,0 +1,878 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		240955AD06C99D976D5082AF /* Pods_DribbleAppTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7592E784C8FE1BD0E51E331 /* Pods_DribbleAppTestTests.framework */; };
+		5895672522E8C9C2A0066D4F /* Pods_DribbleAppTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583419FFB430D27B9386D9EB /* Pods_DribbleAppTest.framework */; };
+		A98479FE4A9BED4EB6A2992F /* Pods_DribbleAppTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41A9915246AD29BC708868E /* Pods_DribbleAppTestUITests.framework */; };
+		EE0E365B1EA2925000E55ABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E365A1EA2925000E55ABB /* AppDelegate.swift */; };
+		EE0E36601EA2925000E55ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0E365E1EA2925000E55ABB /* Main.storyboard */; };
+		EE0E36621EA2925000E55ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E36611EA2925000E55ABB /* Assets.xcassets */; };
+		EE0E36651EA2925000E55ABB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0E36631EA2925000E55ABB /* LaunchScreen.storyboard */; };
+		EE0E36701EA2925000E55ABB /* DribbleAppTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E366F1EA2925000E55ABB /* DribbleAppTestTests.swift */; };
+		EE0E367B1EA2925000E55ABB /* DribbleAppTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E367A1EA2925000E55ABB /* DribbleAppTestUITests.swift */; };
+		EE0E368E1EA295ED00E55ABB /* ShotVieweringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E368D1EA295ED00E55ABB /* ShotVieweringVC.swift */; };
+		EE0E36951EA36A1B00E55ABB /* ShotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */; };
+		EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */; };
+		EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */; };
+		EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */ = {isa = PBXBuildFile; fileRef = EED089291EA49B4A0087FC34 /* dribbble content */; };
+		EED0892C1EA4DC4D0087FC34 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0892B1EA4DC4C0087FC34 /* avatar.png */; };
+		EED0892E1EA63D9E0087FC34 /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0892D1EA63D9E0087FC34 /* Login.png */; };
+		EED089381EA64B420087FC34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED089371EA64B420087FC34 /* LoginViewController.swift */; };
+		EED0893A1EA651B60087FC34 /* fon.png in Resources */ = {isa = PBXBuildFile; fileRef = EED089391EA651B60087FC34 /* fon.png */; };
+		EED0893C1EA654C20087FC34 /* userIco.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0893B1EA654C20087FC34 /* userIco.png */; };
+		EED0893E1EA658540087FC34 /* passwordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0893D1EA658540087FC34 /* passwordIcon.png */; };
+		EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0893F1EA674F60087FC34 /* DribbleServises.swift */; };
+		EED089451EA6771F0087FC34 /* DribbbleFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */; };
+		EEFD8BA31ECCD31A009A8F46 /* ShotCommentingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */; };
+		EEFD8BA71ECDAD11009A8F46 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BA61ECDAD11009A8F46 /* TableViewController.swift */; };
+		EEFD8BAA1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BA81ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift */; };
+		EEFD8BAB1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEFD8BA91ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib */; };
+		EEFD8BB11ECDEE22009A8F46 /* DribbleFeddComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BB01ECDEE22009A8F46 /* DribbleFeddComments.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE0E366C1EA2925000E55ABB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0E364F1EA2925000E55ABB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE0E36561EA2925000E55ABB;
+			remoteInfo = DribbleAppTest;
+		};
+		EE0E36771EA2925000E55ABB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0E364F1EA2925000E55ABB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE0E36561EA2925000E55ABB;
+			remoteInfo = DribbleAppTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C981A5848A492A89C3638D6 /* Pods-DribbleAppTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbleAppTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DribbleAppTest/Pods-DribbleAppTest.debug.xcconfig"; sourceTree = "<group>"; };
+		1325DE67524677988BFF42A8 /* Pods-DribbleAppTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbleAppTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DribbleAppTestTests/Pods-DribbleAppTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		23549C58334DA74BEF7CF6F5 /* Pods-DribbleAppTestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbleAppTestUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DribbleAppTestUITests/Pods-DribbleAppTestUITests.release.xcconfig"; sourceTree = "<group>"; };
+		583419FFB430D27B9386D9EB /* Pods_DribbleAppTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DribbleAppTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9EA095D22B7C12B9BCADA7C /* Pods-DribbleAppTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbleAppTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-DribbleAppTest/Pods-DribbleAppTest.release.xcconfig"; sourceTree = "<group>"; };
+		C41A9915246AD29BC708868E /* Pods_DribbleAppTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DribbleAppTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7592E784C8FE1BD0E51E331 /* Pods_DribbleAppTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DribbleAppTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE80FCF4CB9D99DA5F3C5C21 /* Pods-DribbleAppTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbleAppTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DribbleAppTestTests/Pods-DribbleAppTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E556FECFE9A94AF61B0C8272 /* Pods-DribbleAppTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbleAppTestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DribbleAppTestUITests/Pods-DribbleAppTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE0E36571EA2925000E55ABB /* DribbleAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DribbleAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0E365A1EA2925000E55ABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE0E365F1EA2925000E55ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE0E36611EA2925000E55ABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE0E36641EA2925000E55ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE0E36661EA2925000E55ABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = DribbleAppTest/Info.plist; sourceTree = "<group>"; };
+		EE0E366B1EA2925000E55ABB /* DribbleAppTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DribbleAppTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0E366F1EA2925000E55ABB /* DribbleAppTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DribbleAppTestTests.swift; sourceTree = "<group>"; };
+		EE0E36711EA2925000E55ABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE0E36761EA2925000E55ABB /* DribbleAppTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DribbleAppTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0E367A1EA2925000E55ABB /* DribbleAppTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DribbleAppTestUITests.swift; sourceTree = "<group>"; };
+		EE0E367C1EA2925000E55ABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE0E368D1EA295ED00E55ABB /* ShotVieweringVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotVieweringVC.swift; path = ViewControllers/ShotVieweringVC/ShotVieweringVC.swift; sourceTree = "<group>"; };
+		EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotViewCell.swift; path = ViewControllers/ShotVieweringVC/ShotViewCell.swift; sourceTree = "<group>"; };
+		EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShotViewCell.xib; path = ViewControllers/ShotVieweringVC/ShotViewCell.xib; sourceTree = "<group>"; };
+		EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FPAHRIq0DCo.jpg; sourceTree = "<group>"; };
+		EED089291EA49B4A0087FC34 /* dribbble content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "dribbble content"; sourceTree = "<group>"; };
+		EED0892B1EA4DC4C0087FC34 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
+		EED0892D1EA63D9E0087FC34 /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
+		EED089371EA64B420087FC34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginVC/LoginViewController.swift; sourceTree = "<group>"; };
+		EED089391EA651B60087FC34 /* fon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fon.png; sourceTree = "<group>"; };
+		EED0893B1EA654C20087FC34 /* userIco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userIco.png; sourceTree = "<group>"; };
+		EED0893D1EA658540087FC34 /* passwordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passwordIcon.png; sourceTree = "<group>"; };
+		EED0893F1EA674F60087FC34 /* DribbleServises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleServises.swift; path = ViewControllers/Servises/DribbleServises.swift; sourceTree = "<group>"; };
+		EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbbleFeedItem.swift; path = Model/DribbbleFeedItem.swift; sourceTree = "<group>"; };
+		EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotCommentingVC.swift; path = ViewControllers/ShotCommentingVC.swift; sourceTree = "<group>"; };
+		EEFD8BA61ECDAD11009A8F46 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		EEFD8BA81ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotCommentingViewCellTableViewCell.swift; path = ViewControllers/ShotCommentingVC/ShotCommentingViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		EEFD8BA91ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShotCommentingViewCellTableViewCell.xib; path = ViewControllers/ShotCommentingVC/ShotCommentingViewCellTableViewCell.xib; sourceTree = "<group>"; };
+		EEFD8BB01ECDEE22009A8F46 /* DribbleFeddComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleFeddComments.swift; path = Model/DribbleFeddComments.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE0E36541EA2925000E55ABB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5895672522E8C9C2A0066D4F /* Pods_DribbleAppTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0E36681EA2925000E55ABB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240955AD06C99D976D5082AF /* Pods_DribbleAppTestTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0E36731EA2925000E55ABB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A98479FE4A9BED4EB6A2992F /* Pods_DribbleAppTestUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6783A7DEC75BC91B4CB04731 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				583419FFB430D27B9386D9EB /* Pods_DribbleAppTest.framework */,
+				D7592E784C8FE1BD0E51E331 /* Pods_DribbleAppTestTests.framework */,
+				C41A9915246AD29BC708868E /* Pods_DribbleAppTestUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC753D497FD5612AD0E42269 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C981A5848A492A89C3638D6 /* Pods-DribbleAppTest.debug.xcconfig */,
+				B9EA095D22B7C12B9BCADA7C /* Pods-DribbleAppTest.release.xcconfig */,
+				DE80FCF4CB9D99DA5F3C5C21 /* Pods-DribbleAppTestTests.debug.xcconfig */,
+				1325DE67524677988BFF42A8 /* Pods-DribbleAppTestTests.release.xcconfig */,
+				E556FECFE9A94AF61B0C8272 /* Pods-DribbleAppTestUITests.debug.xcconfig */,
+				23549C58334DA74BEF7CF6F5 /* Pods-DribbleAppTestUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EE0E364E1EA2925000E55ABB = {
+			isa = PBXGroup;
+			children = (
+				EE0E36591EA2925000E55ABB /* DribbleAppTest */,
+				EE0E366E1EA2925000E55ABB /* DribbleAppTestTests */,
+				EE0E36791EA2925000E55ABB /* DribbleAppTestUITests */,
+				EE0E36581EA2925000E55ABB /* Products */,
+				EE0E36631EA2925000E55ABB /* LaunchScreen.storyboard */,
+				EE0E36661EA2925000E55ABB /* Info.plist */,
+				CC753D497FD5612AD0E42269 /* Pods */,
+				6783A7DEC75BC91B4CB04731 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EE0E36581EA2925000E55ABB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E36571EA2925000E55ABB /* DribbleAppTest.app */,
+				EE0E366B1EA2925000E55ABB /* DribbleAppTestTests.xctest */,
+				EE0E36761EA2925000E55ABB /* DribbleAppTestUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE0E36591EA2925000E55ABB /* DribbleAppTest */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E365A1EA2925000E55ABB /* AppDelegate.swift */,
+				EE0E365E1EA2925000E55ABB /* Main.storyboard */,
+				EE0E36611EA2925000E55ABB /* Assets.xcassets */,
+				EED089431EA676E20087FC34 /* Model */,
+				EED089281EA3B6310087FC34 /* assets */,
+				EE0E36881EA2925F00E55ABB /* ViewControllers */,
+				EED089411EA675120087FC34 /* Servises */,
+			);
+			path = DribbleAppTest;
+			sourceTree = "<group>";
+		};
+		EE0E366E1EA2925000E55ABB /* DribbleAppTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E366F1EA2925000E55ABB /* DribbleAppTestTests.swift */,
+				EE0E36711EA2925000E55ABB /* Info.plist */,
+			);
+			path = DribbleAppTestTests;
+			sourceTree = "<group>";
+		};
+		EE0E36791EA2925000E55ABB /* DribbleAppTestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E367A1EA2925000E55ABB /* DribbleAppTestUITests.swift */,
+				EE0E367C1EA2925000E55ABB /* Info.plist */,
+			);
+			path = DribbleAppTestUITests;
+			sourceTree = "<group>";
+		};
+		EE0E36881EA2925F00E55ABB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E36891EA293EA00E55ABB /* LoginVC */,
+				EE0E368A1EA293FD00E55ABB /* ShotVieweringVC */,
+				EE0E368C1EA2945B00E55ABB /* ProfileVieweringVC */,
+				EE0E368B1EA2942A00E55ABB /* ShotCommentingVC */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EE0E36891EA293EA00E55ABB /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				EED089371EA64B420087FC34 /* LoginViewController.swift */,
+			);
+			name = LoginVC;
+			sourceTree = "<group>";
+		};
+		EE0E368A1EA293FD00E55ABB /* ShotVieweringVC */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */,
+				EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */,
+				EE0E368D1EA295ED00E55ABB /* ShotVieweringVC.swift */,
+			);
+			name = ShotVieweringVC;
+			sourceTree = "<group>";
+		};
+		EE0E368B1EA2942A00E55ABB /* ShotCommentingVC */ = {
+			isa = PBXGroup;
+			children = (
+				EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */,
+				EEFD8BA81ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift */,
+				EEFD8BA91ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib */,
+				EEFD8BA61ECDAD11009A8F46 /* TableViewController.swift */,
+			);
+			name = ShotCommentingVC;
+			sourceTree = "<group>";
+		};
+		EE0E368C1EA2945B00E55ABB /* ProfileVieweringVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ProfileVieweringVC;
+			sourceTree = "<group>";
+		};
+		EED089281EA3B6310087FC34 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				EED089291EA49B4A0087FC34 /* dribbble content */,
+				EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */,
+				EED089391EA651B60087FC34 /* fon.png */,
+				EED0892D1EA63D9E0087FC34 /* Login.png */,
+				EED0893B1EA654C20087FC34 /* userIco.png */,
+				EED0893D1EA658540087FC34 /* passwordIcon.png */,
+				EED0892B1EA4DC4C0087FC34 /* avatar.png */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		EED089411EA675120087FC34 /* Servises */ = {
+			isa = PBXGroup;
+			children = (
+				EED089421EA676C00087FC34 /* Dribbble */,
+			);
+			name = Servises;
+			sourceTree = "<group>";
+		};
+		EED089421EA676C00087FC34 /* Dribbble */ = {
+			isa = PBXGroup;
+			children = (
+				EED0893F1EA674F60087FC34 /* DribbleServises.swift */,
+			);
+			name = Dribbble;
+			sourceTree = "<group>";
+		};
+		EED089431EA676E20087FC34 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */,
+				EEFD8BB01ECDEE22009A8F46 /* DribbleFeddComments.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE0E36561EA2925000E55ABB /* DribbleAppTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0E367F1EA2925000E55ABB /* Build configuration list for PBXNativeTarget "DribbleAppTest" */;
+			buildPhases = (
+				F2E7D3C7B887585F8D98052A /* [CP] Check Pods Manifest.lock */,
+				EE0E36531EA2925000E55ABB /* Sources */,
+				EE0E36541EA2925000E55ABB /* Frameworks */,
+				EE0E36551EA2925000E55ABB /* Resources */,
+				8AC4A481FA372D8E938356D5 /* [CP] Embed Pods Frameworks */,
+				AEF7A6240989D4E9DBBE1357 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DribbleAppTest;
+			productName = DribbleAppTest;
+			productReference = EE0E36571EA2925000E55ABB /* DribbleAppTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE0E366A1EA2925000E55ABB /* DribbleAppTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0E36821EA2925000E55ABB /* Build configuration list for PBXNativeTarget "DribbleAppTestTests" */;
+			buildPhases = (
+				AED2AF0A5249903E1CF86D98 /* [CP] Check Pods Manifest.lock */,
+				EE0E36671EA2925000E55ABB /* Sources */,
+				EE0E36681EA2925000E55ABB /* Frameworks */,
+				EE0E36691EA2925000E55ABB /* Resources */,
+				6E9750767F02A49D5D404B6B /* [CP] Embed Pods Frameworks */,
+				FA8279349323FE3DA7BCD35B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE0E366D1EA2925000E55ABB /* PBXTargetDependency */,
+			);
+			name = DribbleAppTestTests;
+			productName = DribbleAppTestTests;
+			productReference = EE0E366B1EA2925000E55ABB /* DribbleAppTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE0E36751EA2925000E55ABB /* DribbleAppTestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0E36851EA2925000E55ABB /* Build configuration list for PBXNativeTarget "DribbleAppTestUITests" */;
+			buildPhases = (
+				8CDE5BF04BC395E35E4BD81D /* [CP] Check Pods Manifest.lock */,
+				EE0E36721EA2925000E55ABB /* Sources */,
+				EE0E36731EA2925000E55ABB /* Frameworks */,
+				EE0E36741EA2925000E55ABB /* Resources */,
+				9B5198E69867DA3B30BE3058 /* [CP] Embed Pods Frameworks */,
+				89D413A7DA2D73E65F2F856B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE0E36781EA2925000E55ABB /* PBXTargetDependency */,
+			);
+			name = DribbleAppTestUITests;
+			productName = DribbleAppTestUITests;
+			productReference = EE0E36761EA2925000E55ABB /* DribbleAppTestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE0E364F1EA2925000E55ABB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = vrway;
+				TargetAttributes = {
+					EE0E36561EA2925000E55ABB = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 9G444XGCQ7;
+						ProvisioningStyle = Automatic;
+					};
+					EE0E366A1EA2925000E55ABB = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = D8U3HNMNV7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EE0E36561EA2925000E55ABB;
+					};
+					EE0E36751EA2925000E55ABB = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = D8U3HNMNV7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EE0E36561EA2925000E55ABB;
+					};
+				};
+			};
+			buildConfigurationList = EE0E36521EA2925000E55ABB /* Build configuration list for PBXProject "DribbleAppTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE0E364E1EA2925000E55ABB;
+			productRefGroup = EE0E36581EA2925000E55ABB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE0E36561EA2925000E55ABB /* DribbleAppTest */,
+				EE0E366A1EA2925000E55ABB /* DribbleAppTestTests */,
+				EE0E36751EA2925000E55ABB /* DribbleAppTestUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE0E36551EA2925000E55ABB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */,
+				EEFD8BAB1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib in Resources */,
+				EED0892C1EA4DC4D0087FC34 /* avatar.png in Resources */,
+				EED0893C1EA654C20087FC34 /* userIco.png in Resources */,
+				EED0893E1EA658540087FC34 /* passwordIcon.png in Resources */,
+				EE0E36651EA2925000E55ABB /* LaunchScreen.storyboard in Resources */,
+				EED0893A1EA651B60087FC34 /* fon.png in Resources */,
+				EE0E36621EA2925000E55ABB /* Assets.xcassets in Resources */,
+				EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */,
+				EED0892E1EA63D9E0087FC34 /* Login.png in Resources */,
+				EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */,
+				EE0E36601EA2925000E55ABB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0E36691EA2925000E55ABB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0E36741EA2925000E55ABB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E9750767F02A49D5D404B6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTestTests/Pods-DribbleAppTestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89D413A7DA2D73E65F2F856B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTestUITests/Pods-DribbleAppTestUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AC4A481FA372D8E938356D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTest/Pods-DribbleAppTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CDE5BF04BC395E35E4BD81D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9B5198E69867DA3B30BE3058 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTestUITests/Pods-DribbleAppTestUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AED2AF0A5249903E1CF86D98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AEF7A6240989D4E9DBBE1357 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTest/Pods-DribbleAppTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2E7D3C7B887585F8D98052A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA8279349323FE3DA7BCD35B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTestTests/Pods-DribbleAppTestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE0E36531EA2925000E55ABB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEFD8BAA1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift in Sources */,
+				EEFD8BA31ECCD31A009A8F46 /* ShotCommentingVC.swift in Sources */,
+				EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */,
+				EED089451EA6771F0087FC34 /* DribbbleFeedItem.swift in Sources */,
+				EEFD8BA71ECDAD11009A8F46 /* TableViewController.swift in Sources */,
+				EE0E368E1EA295ED00E55ABB /* ShotVieweringVC.swift in Sources */,
+				EE0E36951EA36A1B00E55ABB /* ShotViewCell.swift in Sources */,
+				EED089381EA64B420087FC34 /* LoginViewController.swift in Sources */,
+				EE0E365B1EA2925000E55ABB /* AppDelegate.swift in Sources */,
+				EEFD8BB11ECDEE22009A8F46 /* DribbleFeddComments.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0E36671EA2925000E55ABB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0E36701EA2925000E55ABB /* DribbleAppTestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0E36721EA2925000E55ABB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0E367B1EA2925000E55ABB /* DribbleAppTestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE0E366D1EA2925000E55ABB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE0E36561EA2925000E55ABB /* DribbleAppTest */;
+			targetProxy = EE0E366C1EA2925000E55ABB /* PBXContainerItemProxy */;
+		};
+		EE0E36781EA2925000E55ABB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE0E36561EA2925000E55ABB /* DribbleAppTest */;
+			targetProxy = EE0E36771EA2925000E55ABB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE0E365E1EA2925000E55ABB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE0E365F1EA2925000E55ABB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE0E36631EA2925000E55ABB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE0E36641EA2925000E55ABB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = DribbleAppTest;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE0E367D1EA2925000E55ABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE0E367E1EA2925000E55ABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE0E36801EA2925000E55ABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C981A5848A492A89C3638D6 /* Pods-DribbleAppTest.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9G444XGCQ7;
+				INFOPLIST_FILE = DribbleAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EE0E36811EA2925000E55ABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9EA095D22B7C12B9BCADA7C /* Pods-DribbleAppTest.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9G444XGCQ7;
+				INFOPLIST_FILE = DribbleAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		EE0E36831EA2925000E55ABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE80FCF4CB9D99DA5F3C5C21 /* Pods-DribbleAppTestTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = D8U3HNMNV7;
+				INFOPLIST_FILE = DribbleAppTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DribbleAppTest.app/DribbleAppTest";
+			};
+			name = Debug;
+		};
+		EE0E36841EA2925000E55ABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1325DE67524677988BFF42A8 /* Pods-DribbleAppTestTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = D8U3HNMNV7;
+				INFOPLIST_FILE = DribbleAppTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DribbleAppTest.app/DribbleAppTest";
+			};
+			name = Release;
+		};
+		EE0E36861EA2925000E55ABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E556FECFE9A94AF61B0C8272 /* Pods-DribbleAppTestUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = D8U3HNMNV7;
+				INFOPLIST_FILE = DribbleAppTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DribbleAppTest;
+			};
+			name = Debug;
+		};
+		EE0E36871EA2925000E55ABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23549C58334DA74BEF7CF6F5 /* Pods-DribbleAppTestUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = D8U3HNMNV7;
+				INFOPLIST_FILE = DribbleAppTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DribbleAppTest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE0E36521EA2925000E55ABB /* Build configuration list for PBXProject "DribbleAppTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0E367D1EA2925000E55ABB /* Debug */,
+				EE0E367E1EA2925000E55ABB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE0E367F1EA2925000E55ABB /* Build configuration list for PBXNativeTarget "DribbleAppTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0E36801EA2925000E55ABB /* Debug */,
+				EE0E36811EA2925000E55ABB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE0E36821EA2925000E55ABB /* Build configuration list for PBXNativeTarget "DribbleAppTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0E36831EA2925000E55ABB /* Debug */,
+				EE0E36841EA2925000E55ABB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE0E36851EA2925000E55ABB /* Build configuration list for PBXNativeTarget "DribbleAppTestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0E36861EA2925000E55ABB /* Debug */,
+				EE0E36871EA2925000E55ABB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE0E364F1EA2925000E55ABB /* Project object */;
+}

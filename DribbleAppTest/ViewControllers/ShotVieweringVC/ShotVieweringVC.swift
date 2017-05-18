@@ -1,0 +1,169 @@
+
+
+import UIKit
+
+
+class ShotVieweringVC:  UITableViewController{
+    
+    @IBAction func gifButtonPressed(_ sender: UIBarButtonItem) {
+
+    }
+    
+    @IBAction func HDbuttonPressed(_ sender: Any) {
+        
+    }
+
+    @IBOutlet weak var segmAnimate: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    
+    @IBAction func segmenAnimateAction(_ sender: UISegmentedControl) {
+        MySingleton.shared.animateFlag = segmAnimate.selectedSegmentIndex == 0 ? true : false
+
+        
+        if !MySingleton.shared.animateFlag{
+            var indexShot = 0
+            repeat{
+                
+                if arrayOfCellData[indexShot].animated {
+                    self.arrayOfCellData.remove(at: indexShot)
+                }
+                indexShot+=1
+                
+            } while indexShot < arrayOfCellData.count
+        self.tableView.reloadData()
+        }
+    
+    }
+    
+    func segmentalControlAction(_ sender: UISegmentedControl) {
+        MySingleton.shared.HDImageFlag = segmentedControl.selectedSegmentIndex == 0 ? true : false
+    }
+  
+   
+    
+
+
+    
+    
+    var arrayOfCellData: [DribbbleFeedItem] = []
+    
+    var loadMoreStatus = false
+    var pageNum = 1
+    
+    fileprivate struct Const {
+        static let identifier = "cellIdentifier"
+        static let cellNib = "ShotCell"
+    }
+
+
+    
+    override func viewDidLoad() {
+
+        let nib = UINib(nibName: "ShotViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: Const.identifier)
+        loadShots(page: 1)
+ 
+        
+        
+//TODO% check update
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Updating...")
+        refreshControl.addTarget(self, action: #selector(ShotVieweringVC.refreshInvoked(_:)), for: UIControlEvents.valueChanged)
+        tableView?.addSubview(refreshControl)
+    }
+    
+    
+    func refreshInvoked(_ sender:AnyObject) {
+        sender.beginRefreshing()
+        pageNum = 0
+        loadShots(page: 1)
+        sender.endRefreshing()
+    }
+    
+    
+    func loadShots(page: Int) {
+        
+        if !loadMoreStatus {
+            loadMoreStatus = true
+            pageNum += 1
+           
+            let url = Config.POPULAR_URL + "&page=" + String(page) + Config.ACCESS_TOKEN
+            
+        
+            DribbbleServises.instance.getShotsFeed(url: url, successCallback: {[weak self] feedItems in
+                guard let `self` = self else { return }
+                
+                
+                
+                
+                
+                self.arrayOfCellData += feedItems
+                self.tableView.reloadData()
+                self.loadMoreStatus = false
+                
+                }, errorCallback: { error in
+                    print(error)
+            })
+        }
+    }
+
+    
+ 
+    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 1
+    }
+ 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return arrayOfCellData.count
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+     return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+       
+        let cell =  tableView.dequeueReusableCell(withIdentifier: Const.identifier, for: indexPath) as! ShotViewCell
+    
+        let dataItem = arrayOfCellData[indexPath.section]
+        cell.setData(dataItem)
+        
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        let heigtCell = self.tableView.frame.height/2
+        return heigtCell
+    }
+    
+    
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //super.scrollViewDidScroll(scrollView)
+        
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        let deltaOffset = maximumOffset - currentOffset
+        
+        if deltaOffset <= scrollView.frame.size.height * 2 {
+        loadShots(page: pageNum)
+            
+          
+         
+        }
+    
+    }
+    
+   
+    
+ 
+    
+  
+ 
+    
+}
