@@ -1,0 +1,75 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Alamofire (4.4.0)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - DribbbleSDK (0.0.3):
+    - AFNetworking (~> 2.3)
+    - BlocksKit
+    - JSONModel
+    - NXOAuth2Client
+  - JSONModel (1.7.0)
+  - NXOAuth2Client (1.2.8)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SwiftyJSON (3.1.4)
+  - TextAttributes (1.0)
+  - UIScrollView-InfiniteScroll (1.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - DribbbleSDK
+  - SDWebImage (~> 3.8)
+  - SwiftyJSON
+  - TextAttributes
+  - UIScrollView-InfiniteScroll (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  DribbbleSDK: cfcecbe6d73254d4abda6780fa4ea1beb8f2c877
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  NXOAuth2Client: 98c4d4c594edd2b289cfc34a8928653e1dab7adf
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TextAttributes: 45b2713a1d174c377d320b51129c304eac381638
+  UIScrollView-InfiniteScroll: a90df4ba4a7ca1926128ade34a850ddbdf74c564
+
+PODFILE CHECKSUM: 1be654617ddd0e1373bf3b81e8471428908288ed
+
+COCOAPODS: 1.2.1
