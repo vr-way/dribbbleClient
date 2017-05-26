@@ -8,6 +8,9 @@ class MySingleton {
     static let shared = MySingleton()
     var animateFlag = false
     var HDImageFlag =  true
+    var settingsButtonPressed = false
+    var shotId = ""
+    var userNickname = ""
 }
 
 

@@ -5,39 +5,20 @@ import UIKit
 
 class ShotVieweringVC:  UITableViewController{
     
-    @IBAction func gifButtonPressed(_ sender: UIBarButtonItem) {
-
-    }
+   
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     
-    @IBAction func HDbuttonPressed(_ sender: Any) {
+    @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         
-    }
-
-    @IBOutlet weak var segmAnimate: UISegmentedControl!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    
-    @IBAction func segmenAnimateAction(_ sender: UISegmentedControl) {
-        MySingleton.shared.animateFlag = segmAnimate.selectedSegmentIndex == 0 ? true : false
-
-        
-        if !MySingleton.shared.animateFlag{
-            var indexShot = 0
-            repeat{
-                
-                if arrayOfCellData[indexShot].animated {
-                    self.arrayOfCellData.remove(at: indexShot)
-                }
-                indexShot+=1
-                
-            } while indexShot < arrayOfCellData.count
-        self.tableView.reloadData()
+        if  !MySingleton.shared.settingsButtonPressed {
+            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpId") as! PopUpViewController
+            self.addChildViewController(popOverVC)
+            popOverVC.view.frame =  self.tableView.frame
+            self.tableView.addSubview(popOverVC.view)
+            popOverVC.didMove(toParentViewController: self)
         }
-    
-    }
-    
-    func segmentalControlAction(_ sender: UISegmentedControl) {
-        MySingleton.shared.HDImageFlag = segmentedControl.selectedSegmentIndex == 0 ? true : false
+        
+        MySingleton.shared.settingsButtonPressed = true
     }
   
    
@@ -57,16 +38,12 @@ class ShotVieweringVC:  UITableViewController{
     }
 
 
-    
+  
     override func viewDidLoad() {
-
+        
         let nib = UINib(nibName: "ShotViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Const.identifier)
         loadShots(page: 1)
- 
-        
-        
-//TODO% check update
         
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Updating...")
@@ -78,9 +55,12 @@ class ShotVieweringVC:  UITableViewController{
     func refreshInvoked(_ sender:AnyObject) {
         sender.beginRefreshing()
         pageNum = 0
+       // arrayOfCellData.removeAll()
         loadShots(page: 1)
         sender.endRefreshing()
     }
+    
+ 
     
     
     func loadShots(page: Int) {
@@ -89,16 +69,9 @@ class ShotVieweringVC:  UITableViewController{
             loadMoreStatus = true
             pageNum += 1
            
-            let url = Config.POPULAR_URL + "&page=" + String(page) + Config.ACCESS_TOKEN
-            
-        
-            DribbbleServises.instance.getShotsFeed(url: url, successCallback: {[weak self] feedItems in
+            DribbbleServises.instance.getShotsFeed(page: page, successCallback: {[weak self] feedItems in
                 guard let `self` = self else { return }
-                
-                
-                
-                
-                
+          
                 self.arrayOfCellData += feedItems
                 self.tableView.reloadData()
                 self.loadMoreStatus = false
@@ -131,6 +104,12 @@ class ShotVieweringVC:  UITableViewController{
     
         let dataItem = arrayOfCellData[indexPath.section]
         cell.setData(dataItem)
+        cell.onLabelTap = { _ in
+            
+            let shotCommentsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
+            self.navigationController?.pushViewController(shotCommentsVC, animated: true)
+            
+        }
         
         return cell
     }
@@ -160,7 +139,27 @@ class ShotVieweringVC:  UITableViewController{
     }
     
    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        let shotCommentsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShotVC")
+        
+        navigationController?.pushViewController(shotCommentsVC, animated: true)
+        
+        let shotId =  arrayOfCellData[indexPath.section].shotId
+      
+        MySingleton.shared.shotId = shotId
+        
+        
+    }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let DestinationVC : ShotVieweringVC = segue.destination as! ShotVieweringVC
+//        let shotId =  arrayOfCellData[0].shotId
+//        
+//       
+//        
+//    }
  
     
   

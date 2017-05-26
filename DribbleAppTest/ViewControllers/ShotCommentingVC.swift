@@ -4,17 +4,25 @@ import UIKit
 
 class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource{
     
+    @IBOutlet weak var sortCommentConstrain: NSLayoutConstraint!
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    @IBAction func reverseButtonPressed(_ sender: UIButton) {
+        
+        self.arrayOfCommentsData.reverse()
+        self.tableView.reloadData()
+    }
     @IBAction func postButtonPressed(_ sender: UIButton) {
         self.view.endEditing(true)
       
     }
-    var arrayOfCommentsData = ["item1","item2","3","item4","item5","item6","item","item","item","item","item"]
+    var arrayOfCommentsData = [DribbleFeedComments ]()
+    let alertNoComments = UIAlertController(title: "Ooups", message: "There isn`t any commets to this shot.", preferredStyle: UIAlertControllerStyle.alert)
     
+   
     
     fileprivate struct Const {
         static let identifier = "ShotCommentId"
@@ -22,12 +30,20 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
         static let xibName = "ShotCommentingViewCellTableViewCell"
     }
     
+   
+   
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      
+        
+       
+        
+        
+        alertNoComments.addAction(UIAlertAction(title: "Be first!", style: UIAlertActionStyle.default, handler: nil))
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
       
@@ -35,6 +51,17 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
         self.commentTextField.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        let nib = UINib(nibName: Const.xibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: Const.identifier)
+        
+        self.tableView.estimatedRowHeight = 2
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let shotId = MySingleton.shared.shotId
+        fetchComments(shotID: shotId)
+        
+      
     }
     
     
@@ -53,18 +80,24 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return 5
+        return arrayOfCommentsData.count
     }
 
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShotCommentId", for: indexPath) as! ShotCommentingViewCell
-        
-    
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifier, for: indexPath) as! ShotCommentingViewCell
+        if !arrayOfCommentsData.isEmpty{
+        let dataItem = arrayOfCommentsData[indexPath.row]
+        cell.setCommentData(dataItem)
+        }
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//      //  var cell = tableView.cellForRow(at: indexPath)
+//        return tableView.rowHeight = UITableViewAutomaticDimension
+//    }
+    
     
 
     func keyboardWillShow(notification:Notification) {
@@ -85,6 +118,11 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
         let changeInHeight = (keyboardFrame.height + 0) * (show ? 1 : -1)
         UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
             self.bottomConstraint.constant += changeInHeight
+           // self.tableView.scrollToRowAtIndexPath(self.tableView.indexPath, atScrollPosition: .Top, animated: true)
+            //self.tableView.scrollsToTop(changeInHeight)
+             //tableView.setContentOffset(CGPointMake(0, textField.center.y-60), animated: true)
+            //self.tableView.setContentOffset(60, animated: true)
+            //self.tableView.scrollsToTop
         })
         
     }
@@ -95,16 +133,50 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        //TODO:        self.tableView.endEditing(true)
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         commentTextField.resignFirstResponder()
         return true
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        commentTextField.resignFirstResponder()
+    }
     
+    
+    
+    
+    func fetchComments(shotID: String) {
+       
+        
+      DribbbleServises.instance.getComment(shotId: shotID, successCallback: { [weak self] comments in
+        guard let `self` = self else { return }
+        
+        self.arrayOfCommentsData += comments
+     
+       
+        if self.arrayOfCommentsData.isEmpty {
+            print("array is empty")
+            
+            self.present(self.alertNoComments, animated: true, completion: nil)
+        } else {
+            self.sortCommentConstrain.constant += 55
+        }
+        
+        
+        self.tableView.reloadData()
+        
+      }, errorCallback: { error in
+        print(error)
+      })
+        
+    
+    }
+    
+    
+    
+    
+
+
     
     
 

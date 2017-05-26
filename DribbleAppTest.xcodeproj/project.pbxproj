@@ -19,6 +19,7 @@
 		EE0E368E1EA295ED00E55ABB /* ShotVieweringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E368D1EA295ED00E55ABB /* ShotVieweringVC.swift */; };
 		EE0E36951EA36A1B00E55ABB /* ShotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */; };
 		EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */; };
+		EE1FAA461ED583440039E624 /* FollowersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1FAA451ED583440039E624 /* FollowersCell.xib */; };
 		EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */; };
 		EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */ = {isa = PBXBuildFile; fileRef = EED089291EA49B4A0087FC34 /* dribbble content */; };
 		EED0892C1EA4DC4D0087FC34 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0892B1EA4DC4C0087FC34 /* avatar.png */; };
@@ -29,11 +30,16 @@
 		EED0893E1EA658540087FC34 /* passwordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0893D1EA658540087FC34 /* passwordIcon.png */; };
 		EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0893F1EA674F60087FC34 /* DribbleServises.swift */; };
 		EED089451EA6771F0087FC34 /* DribbbleFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */; };
+		EEF9BE691ED2D2F000AAB5E8 /* LoginOauthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9BE681ED2D2F000AAB5E8 /* LoginOauthViewController.swift */; };
+		EEF9BEA51ED3094B00AAB5E8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9BEA41ED3094B00AAB5E8 /* ProfileViewController.swift */; };
+		EEF9BEAA1ED47DB400AAB5E8 /* FollowersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9BEA81ED47DB400AAB5E8 /* FollowersCell.swift */; };
+		EEF9BEAE1ED48B6C00AAB5E8 /* LikesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9BEAC1ED48B6C00AAB5E8 /* LikesCell.swift */; };
+		EEF9BEAF1ED48B6C00AAB5E8 /* LikesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF9BEAD1ED48B6C00AAB5E8 /* LikesCell.xib */; };
 		EEFD8BA31ECCD31A009A8F46 /* ShotCommentingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */; };
-		EEFD8BA71ECDAD11009A8F46 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BA61ECDAD11009A8F46 /* TableViewController.swift */; };
 		EEFD8BAA1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BA81ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift */; };
 		EEFD8BAB1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEFD8BA91ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib */; };
 		EEFD8BB11ECDEE22009A8F46 /* DribbleFeddComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BB01ECDEE22009A8F46 /* DribbleFeddComments.swift */; };
+		EEFD8BB31ECEDFAC009A8F46 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFD8BB21ECEDFAC009A8F46 /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +84,7 @@
 		EE0E368D1EA295ED00E55ABB /* ShotVieweringVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotVieweringVC.swift; path = ViewControllers/ShotVieweringVC/ShotVieweringVC.swift; sourceTree = "<group>"; };
 		EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotViewCell.swift; path = ViewControllers/ShotVieweringVC/ShotViewCell.swift; sourceTree = "<group>"; };
 		EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShotViewCell.xib; path = ViewControllers/ShotVieweringVC/ShotViewCell.xib; sourceTree = "<group>"; };
+		EE1FAA451ED583440039E624 /* FollowersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FollowersCell.xib; path = ProfileVieweringVC/FollowersCell.xib; sourceTree = "<group>"; };
 		EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FPAHRIq0DCo.jpg; sourceTree = "<group>"; };
 		EED089291EA49B4A0087FC34 /* dribbble content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "dribbble content"; sourceTree = "<group>"; };
 		EED0892B1EA4DC4C0087FC34 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
@@ -88,11 +95,16 @@
 		EED0893D1EA658540087FC34 /* passwordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passwordIcon.png; sourceTree = "<group>"; };
 		EED0893F1EA674F60087FC34 /* DribbleServises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleServises.swift; path = ViewControllers/Servises/DribbleServises.swift; sourceTree = "<group>"; };
 		EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbbleFeedItem.swift; path = Model/DribbbleFeedItem.swift; sourceTree = "<group>"; };
+		EEF9BE681ED2D2F000AAB5E8 /* LoginOauthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginOauthViewController.swift; path = ViewControllers/LoginVC/LoginOauthViewController.swift; sourceTree = "<group>"; };
+		EEF9BEA41ED3094B00AAB5E8 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EEF9BEA81ED47DB400AAB5E8 /* FollowersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowersCell.swift; path = ProfileVieweringVC/FollowersCell.swift; sourceTree = "<group>"; };
+		EEF9BEAC1ED48B6C00AAB5E8 /* LikesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesCell.swift; sourceTree = "<group>"; };
+		EEF9BEAD1ED48B6C00AAB5E8 /* LikesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikesCell.xib; sourceTree = "<group>"; };
 		EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotCommentingVC.swift; path = ViewControllers/ShotCommentingVC.swift; sourceTree = "<group>"; };
-		EEFD8BA61ECDAD11009A8F46 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		EEFD8BA81ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotCommentingViewCellTableViewCell.swift; path = ViewControllers/ShotCommentingVC/ShotCommentingViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		EEFD8BA91ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShotCommentingViewCellTableViewCell.xib; path = ViewControllers/ShotCommentingVC/ShotCommentingViewCellTableViewCell.xib; sourceTree = "<group>"; };
 		EEFD8BB01ECDEE22009A8F46 /* DribbleFeddComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleFeddComments.swift; path = Model/DribbleFeddComments.swift; sourceTree = "<group>"; };
+		EEFD8BB21ECEDFAC009A8F46 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopUpViewController.swift; path = ViewControllers/ShotVieweringVC/PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				EED089371EA64B420087FC34 /* LoginViewController.swift */,
+				EEF9BE681ED2D2F000AAB5E8 /* LoginOauthViewController.swift */,
 			);
 			name = LoginVC;
 			sourceTree = "<group>";
@@ -226,6 +239,7 @@
 			children = (
 				EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */,
 				EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */,
+				EEFD8BB21ECEDFAC009A8F46 /* PopUpViewController.swift */,
 				EE0E368D1EA295ED00E55ABB /* ShotVieweringVC.swift */,
 			);
 			name = ShotVieweringVC;
@@ -234,10 +248,9 @@
 		EE0E368B1EA2942A00E55ABB /* ShotCommentingVC */ = {
 			isa = PBXGroup;
 			children = (
-				EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */,
 				EEFD8BA81ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift */,
 				EEFD8BA91ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib */,
-				EEFD8BA61ECDAD11009A8F46 /* TableViewController.swift */,
+				EEFD8BA21ECCD31A009A8F46 /* ShotCommentingVC.swift */,
 			);
 			name = ShotCommentingVC;
 			sourceTree = "<group>";
@@ -245,6 +258,11 @@
 		EE0E368C1EA2945B00E55ABB /* ProfileVieweringVC */ = {
 			isa = PBXGroup;
 			children = (
+				EEF9BEA41ED3094B00AAB5E8 /* ProfileViewController.swift */,
+				EEF9BEAC1ED48B6C00AAB5E8 /* LikesCell.swift */,
+				EEF9BEAD1ED48B6C00AAB5E8 /* LikesCell.xib */,
+				EE1FAA451ED583440039E624 /* FollowersCell.xib */,
+				EEF9BEA81ED47DB400AAB5E8 /* FollowersCell.swift */,
 			);
 			name = ProfileVieweringVC;
 			sourceTree = "<group>";
@@ -301,6 +319,7 @@
 				EE0E36551EA2925000E55ABB /* Resources */,
 				8AC4A481FA372D8E938356D5 /* [CP] Embed Pods Frameworks */,
 				AEF7A6240989D4E9DBBE1357 /* [CP] Copy Pods Resources */,
+				EE2FA1EB1ED850BF00679CB8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -416,8 +435,10 @@
 				EED0893A1EA651B60087FC34 /* fon.png in Resources */,
 				EE0E36621EA2925000E55ABB /* Assets.xcassets in Resources */,
 				EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */,
+				EE1FAA461ED583440039E624 /* FollowersCell.xib in Resources */,
 				EED0892E1EA63D9E0087FC34 /* Login.png in Resources */,
 				EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */,
+				EEF9BEAF1ED48B6C00AAB5E8 /* LikesCell.xib in Resources */,
 				EE0E36601EA2925000E55ABB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +565,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DribbleAppTest/Pods-DribbleAppTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EE2FA1EB1ED850BF00679CB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\nexit 1\nfi";
+		};
 		F2E7D3C7B887585F8D98052A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -581,11 +615,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEF9BEAE1ED48B6C00AAB5E8 /* LikesCell.swift in Sources */,
 				EEFD8BAA1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift in Sources */,
 				EEFD8BA31ECCD31A009A8F46 /* ShotCommentingVC.swift in Sources */,
 				EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */,
+				EEFD8BB31ECEDFAC009A8F46 /* PopUpViewController.swift in Sources */,
 				EED089451EA6771F0087FC34 /* DribbbleFeedItem.swift in Sources */,
-				EEFD8BA71ECDAD11009A8F46 /* TableViewController.swift in Sources */,
+				EEF9BEAA1ED47DB400AAB5E8 /* FollowersCell.swift in Sources */,
+				EEF9BE691ED2D2F000AAB5E8 /* LoginOauthViewController.swift in Sources */,
+				EEF9BEA51ED3094B00AAB5E8 /* ProfileViewController.swift in Sources */,
 				EE0E368E1EA295ED00E55ABB /* ShotVieweringVC.swift in Sources */,
 				EE0E36951EA36A1B00E55ABB /* ShotViewCell.swift in Sources */,
 				EED089381EA64B420087FC34 /* LoginViewController.swift in Sources */,
@@ -748,11 +786,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9G444XGCQ7;
 				INFOPLIST_FILE = DribbleAppTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -763,11 +802,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9G444XGCQ7;
 				INFOPLIST_FILE = DribbleAppTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

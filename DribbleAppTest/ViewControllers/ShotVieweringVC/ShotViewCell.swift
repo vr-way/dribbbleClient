@@ -24,11 +24,9 @@ class ShotViewCell: UITableViewCell {
     
     @IBAction func likeButton2(_ sender: UIButton) {
        
-        
-        //TODO: A user should be able to like shots.
     }
     
-    
+    var onLabelTap: (()->Void)?
     
     
     
@@ -40,6 +38,9 @@ class ShotViewCell: UITableViewCell {
         mainLabelText.text = data.title
         descriptionUnderText.attributedText = formatStringToDescription
         authorName.text = data.author
+        
+        MySingleton.shared.userNickname = data.author
+        
         likeCounter.text = String(data.likes)
         authorAvatar.sd_setImage(with: data.authorAvatarURL)
         mainViewImage.sd_setImage(with: data.shotUrl, placeholderImage: UIImage(named: "shotIsLoading"))
@@ -70,7 +71,7 @@ class ShotViewCell: UITableViewCell {
     
     
     
-    private func stringFromHtml(string: String) -> NSAttributedString? {
+   private  func stringFromHtml(string: String) -> NSAttributedString? {
         do {
             let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
             if let d = data {
@@ -88,20 +89,43 @@ class ShotViewCell: UITableViewCell {
      
         mainViewImage.sd_setImage(with: url)
     }
-
     
+  
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+   
+        if (authorName) != nil {
+            
+            self.authorName.isUserInteractionEnabled = true
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped(_ : )))
+            tap.numberOfTapsRequired = 1
+            self.authorName.addGestureRecognizer(tap)
+            
+        }
+        
+        selectionStyle = .none
         if (authorAvatar) != nil{
-       let minSide = min(authorAvatar.bounds.width, authorAvatar.bounds.height)
-       authorAvatar.layer.cornerRadius = minSide/2
-       authorAvatar.clipsToBounds = true
+            let minSide = min(authorAvatar.bounds.width, authorAvatar.bounds.height)
+            authorAvatar.layer.cornerRadius = minSide/2
+            authorAvatar.clipsToBounds = true
         }
         
     }
-
+    
+    
+    
+    func doubleTapped(_ sender: UITapGestureRecognizer) {
+      
+        //TODO: передать переменную data.author
+       
+        onLabelTap!()
+        
+    }
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

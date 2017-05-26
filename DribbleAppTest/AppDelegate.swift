@@ -7,29 +7,25 @@
 //
 
 import UIKit
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (url.host == "oauth-swift://oauth-callback/dribbble") {
+            OAuthSwift.handle(url: url)
+        }
+        return true
+    }
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        //let feedItems: [DribbbleFeedItem] = getShotsJSON.map {mapDribbbleFeedItem{$0}}
-        
-//        let intarray = [0,1,2,3,4,5,6,7,8,9]
-//        let mapped = intarray.map { $0 + 1 }
-        
-//        getShotsJSON { response in
-//            switch response {
-//            case .success(let result):
-//                mapDribbbleFeedItem(result)
-//            
-//            case .error(let error):
-//                print(error)
-//            }
-//        }
+
     
         return true
     }

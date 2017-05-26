@@ -6,11 +6,13 @@ target 'DribbleAppTest' do
   use_frameworks!
 
 pod 'Alamofire'
-pod "DribbbleSDK"
+
 pod 'SwiftyJSON'
 pod 'SDWebImage', '~>3.8'
 pod 'TextAttributes'
-pod 'UIScrollView-InfiniteScroll', '~> 1.0.0'
+pod 'DribbbleSwift', :git => "https://github.com/gkye/DribbbleSwift.git"
+pod 'OAuthSwift', '~> 1.1.0'
+
   # Pods for DribbleAppTest
 
   target 'DribbleAppTestTests' do
