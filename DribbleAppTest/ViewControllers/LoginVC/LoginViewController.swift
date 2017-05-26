@@ -10,64 +10,45 @@ import UIKit
 import TextAttributes
 
 class LoginViewController: UIViewController {
-    
-    
-    
-    
+
     @IBOutlet weak var userNameTextField: UITextField!
 
     @IBOutlet weak var userPasswordTextFiels: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func onTapButton(_ sender: UIButton) {
-        
-        
-        
+
         if userNameTextField.text == "admin" && userPasswordTextFiels.text == "password" {
             print("all is OK")
         } else {
             print("wrong login|password ")
-            
+
         }
     }
-    
-   
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         viewDisign()
-        
-        
-        
-        
-        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func viewDisign()
-    {
-        
+
+    func viewDisign() {
+
         loginButton.layer.cornerRadius = 30.0
         self.view.bringSubview(toFront: self.loginButton)
         let userNmaeAtributes = TextAttributes()
-        
+
         userNmaeAtributes.foregroundColor = .white
         let userNamePlaceholder = NSAttributedString(string: "Username", attributes: userNmaeAtributes)
         let userPassPlaceholder = NSAttributedString(string: "Password", attributes: userNmaeAtributes)
         self.userNameTextField.attributedPlaceholder = userNamePlaceholder
         self.userPasswordTextFiels.attributedPlaceholder = userPassPlaceholder
-        
-        
-        
+
     }
 
     /*
