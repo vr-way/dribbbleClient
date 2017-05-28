@@ -4,12 +4,13 @@ import UIKit
 
 class PopUpViewController: UIViewController {
 
+    @IBOutlet var backgroundView: UIView!
     
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var hdSegmentalControl: UISegmentedControl!
     @IBOutlet weak var gifSegmentalControl: UISegmentedControl!
     @IBAction func closePopUp(_ sender: UIButton) {
-        hideWithAnimation()
+        dismiss(animated: true, completion: nil)
         MySingleton.shared.settingsButtonPressed = false
     }
     @IBAction func hdSegmentalControlAction(_ sender: UISegmentedControl) {
@@ -31,23 +32,19 @@ class PopUpViewController: UIViewController {
 
         hdSegmentalControl.selectedSegmentIndex =  MySingleton.shared.HDImageFlag == true ? 0 : 1
         gifSegmentalControl.selectedSegmentIndex =  MySingleton.shared.animateFlag == true ? 0 : 1
-        //showAnimate()
+        
+        
+        self.backgroundView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapToClose(_ : )))
+        tap.numberOfTapsRequired = 1
+        self.backgroundView.addGestureRecognizer(tap)
+        
+    }
+    func tapToClose(_ sender: UITapGestureRecognizer){
+        dismiss(animated: true, completion: nil)
     }
 
-    func showAnimate() {
-        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        self.view.alpha = 0
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            self.view.alpha = 1
-        })
 
-    }
-
-    func hideWithAnimation() {
-
-       dismiss(animated: true, completion: nil)
-
-    }
+   
 
 }

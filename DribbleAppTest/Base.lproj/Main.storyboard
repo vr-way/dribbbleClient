@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onJ-Jh-xkS">
-                                <rect key="frame" x="87" y="125" width="240" height="215"/>
+                                <rect key="frame" x="87" y="217" width="240" height="215"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Now-f2-jGp">
                                         <rect key="frame" x="10" y="10" width="220" height="40"/>
@@ -149,10 +149,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="onJ-Jh-xkS" firstAttribute="centerX" secondItem="XX6-ZV-sqU" secondAttribute="centerX" id="eig-NT-yjh"/>
-                            <constraint firstItem="onJ-Jh-xkS" firstAttribute="centerY" secondItem="XX6-ZV-sqU" secondAttribute="centerY" constant="-136" id="x3A-Cy-zC1"/>
+                            <constraint firstItem="onJ-Jh-xkS" firstAttribute="centerY" secondItem="XX6-ZV-sqU" secondAttribute="centerY" constant="-43.5" id="x3A-Cy-zC1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="XX6-ZV-sqU" id="bX7-DA-xbl"/>
                         <outlet property="gifSegmentalControl" destination="oic-48-HyM" id="L7H-sD-LUv"/>
                         <outlet property="hdSegmentalControl" destination="3C7-xr-lMi" id="atz-HP-lw4"/>
                         <outlet property="viewContainer" destination="onJ-Jh-xkS" id="3Kx-Pv-on7"/>

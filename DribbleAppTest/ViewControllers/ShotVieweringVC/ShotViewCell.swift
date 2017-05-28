@@ -61,14 +61,14 @@ class ShotViewCell: UITableViewCell {
         
         mainLabelText.text = data.title
         descriptionUnderText.text = removeHtmlTags(string: data.description)
-        authorName.text = data.author
+        authorName.text = data.authorName
         likeCounter.text = String(data.likes)
         authorAvatar.sd_setImage(with: data.authorAvatarURL)
         mainViewImage.sd_setImage(with: data.shotUrl, placeholderImage: UIImage(named: "shotIsLoading"))
         
         self.viewTitleCancas.isHidden = data.description.characters.count == 0 ? true : false
         
-        MySingleton.shared.userNickname = data.author
+        MySingleton.shared.userNickname = data.authotUsername
     }
     
     

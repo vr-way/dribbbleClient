@@ -88,12 +88,12 @@ class ShotVieweringVC: UITableViewController {
 
     private var settingsVC: PopUpViewController?
     private func settingsTapHandler(){
-        if let settings = settingsVC {
-            settings.dismiss(animated: true)
-            settingsVC = nil
-            return
-        }
-        
+//        if let settings = settingsVC {
+//            settings.dismiss(animated: true)
+//            settingsVC = nil
+//            return
+//        }
+//        
         
         
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpId") as! PopUpViewController
