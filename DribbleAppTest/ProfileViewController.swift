@@ -2,7 +2,7 @@ import UIKit
 import DribbbleSwift
 import SDWebImage
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController {
 
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userAvatar: UIImageView!
@@ -57,46 +57,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         fetchLikes(userNick: userNickname, page: likesPageNum)
     }
 
-                                        /*
-                                        let followersVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "followersVCid") as! FollowersTableVC
-                                        self.addChildViewController(followersVC)
-                                        followersVC.view.frame.size.width = self.view.frame.width
-                                        followersVC.view.frame.size.height = 200
-                                        //=  self.view.frame
-                                        self.view.addSubview(followersVC.view)
-                                        followersVC.didMove(toParentViewController: self)
-                                        
-                                        */
 
 
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return segmentalFlag == 0 ?  arrayOfFollowersData.count : arrayOfLikesData.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if segmentalFlag == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifierFollowers, for: indexPath) as! FollowersCell
-            let dataItem = arrayOfFollowersData[indexPath.row]
-            cell.setData(dataItem)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifierLikes, for: indexPath) as! LikesCell
-            let dataItem = arrayOfLikesData[indexPath.row]
-            cell.setData(dataItem)
-            return cell
-        }
-     }
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
+  
 
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //super.scrollViewDidScroll(scrollView)
@@ -122,7 +88,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             self.userName.text = user?.name!
             self.userLocation.text = user?.location!
-            self.userBio.text = self.decodeCharactersIn(string: (user?.bio!)!)
+            self.userBio.text = removeHtmlTags(string: (user?.bio)!)
             self.userAvatar.sd_setImage(with: URL(string: (user?.avatar_url!)!))
             self.userPRO.isHidden = (user?.pro)! ? false : true
 
@@ -130,18 +96,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
 
-    func decodeCharactersIn(string: String) -> String {
+   
 
-        var string = string; string = string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        let characters = ["&#8217;": "'", "&#8220;": "“", "[&hellip;]": "...", "&#038;": "&", "&#8230;": "...", "&amp;": "&"]
-        for (code, character) in characters {
-            string = string.replacingOccurrences(of: code, with: character, options: .caseInsensitive, range: nil)
-        }
-
-        return string
-    }
-
-    func viewAppearance() {
+  private  func viewAppearance() {
 
         if (userAvatar) != nil {
             let minSide = min(userAvatar.bounds.width, userAvatar.bounds.height)
@@ -187,4 +144,45 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
+}
+
+//MARK:  Table View Delegate
+
+extension ProfileViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+}
+
+
+//MARK: Table View DataSoure
+
+
+extension ProfileViewController : UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return segmentalFlag == 0 ?  arrayOfFollowersData.count : arrayOfLikesData.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if segmentalFlag == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifierFollowers, for: indexPath) as! FollowersCell
+            let dataItem = arrayOfFollowersData[indexPath.row]
+            cell.setData(dataItem)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifierLikes, for: indexPath) as! LikesCell
+            let dataItem = arrayOfLikesData[indexPath.row]
+            cell.setData(dataItem)
+            return cell
+        }
+    }
 }

@@ -60,7 +60,7 @@ class ShotViewCell: UITableViewCell {
     func setData(_ data: DribbbleFeedItem) {
         
         mainLabelText.text = data.title
-        descriptionUnderText.text = decodeCharactersIn(string: data.description)
+        descriptionUnderText.text = removeHtmlTags(string: data.description)
         authorName.text = data.author
         likeCounter.text = String(data.likes)
         authorAvatar.sd_setImage(with: data.authorAvatarURL)
@@ -77,16 +77,7 @@ class ShotViewCell: UITableViewCell {
    
     
     
-    func decodeCharactersIn(string: String) -> String {
-        
-        var string = string; string = string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        let characters = ["&#8217;": "'", "&#8220;": "“", "[&hellip;]": "...", "&#038;": "&", "&#8230;": "...", "&amp;": "&"]
-        for (code, character) in characters {
-            string = string.replacingOccurrences(of: code, with: character, options: .caseInsensitive, range: nil)
-        }
-        
-        return string
-    }
+ 
 
 
 }

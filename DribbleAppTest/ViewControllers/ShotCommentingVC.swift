@@ -1,14 +1,14 @@
 import UIKit
 
 
-class ShotCommentingVC: UIViewController, UITextFieldDelegate {
+class ShotCommentingVC: UIViewController  {
 
     @IBOutlet weak var sortCommentConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     @IBAction func reverseButtonPressed(_ sender: UIButton) {
-
         self.arrayOfCommentsData.reverse()
         self.tableView.reloadData()
     }
@@ -16,8 +16,10 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
 
     }
+    
+    
     fileprivate var arrayOfCommentsData = [DribbleFeedComments ]()
-    let alertNoComments = UIAlertController(title: "Ooups", message: "There isn`t any commets to this shot.", preferredStyle: UIAlertControllerStyle.alert)
+    fileprivate let alertNoComments = UIAlertController(title: "Ooups", message: "There isn`t any commets to this shot.", preferredStyle: UIAlertControllerStyle.alert)
 
     fileprivate struct Const {
         static let identifier = "ShotCommentId"
@@ -25,10 +27,13 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate {
         static let xibName = "ShotCommentingViewCellTableViewCell"
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
         title = "Comments"
+        
         
         alertNoComments.addAction(UIAlertAction(title: "Be first!", style: UIAlertActionStyle.default, handler: nil))
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -48,58 +53,8 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate {
         fetchComments(shotID: shotId)
     }
 
+
    
-
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifier, for: indexPath) as! ShotCommentingViewCell
-        if !arrayOfCommentsData.isEmpty {
-        let dataItem = arrayOfCommentsData[indexPath.row]
-        cell.setCommentData(dataItem)
-        }
-        return cell
-    }
-
-
-    func keyboardWillShow(notification: Notification) {
-        print("keyboard is shown")
-        adjustingHeight(show: true, notification: notification )
-    }
-
-    func keyboardWillHide(notification: Notification) {
-        print("keyboard is hided")
-        adjustingHeight(show: false, notification: notification )
-    }
-
-    func adjustingHeight(show: Bool, notification: Notification) {
-        var userInfo = notification.userInfo!
-        let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        //TODO: set right timeout of animationDurarition
-        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        let changeInHeight = (keyboardFrame.height + 0) * (show ? 1 : -1)
-        self.bottomConstraint.constant += changeInHeight
-        let lastIndex = IndexPath(row: self.arrayOfCommentsData.count - 1, section: 0)
-        self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
-        
-        UIView.animate(withDuration: 1) { 
-            self.view.layoutIfNeeded()
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        commentTextField.resignFirstResponder()
-        return true
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //commentTextField.resignFirstResponder()
-        
-    }
 
     func fetchComments(shotID: String) {
 
@@ -127,6 +82,11 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate {
 //MARK: Table view delegate
 extension ShotCommentingVC: UITableViewDelegate {
     
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        commentTextField.resignFirstResponder()
+    }
 }
 
 //MARK: Table view datasource 
@@ -144,6 +104,58 @@ extension ShotCommentingVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfCommentsData.count
     }
+    
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Const.identifier, for: indexPath) as! ShotCommentingViewCell
+        if !arrayOfCommentsData.isEmpty {
+            let dataItem = arrayOfCommentsData[indexPath.row]
+            cell.setCommentData(dataItem)
+        }
+        return cell
+    }
+    
+}
+
+//MARK: UITextFieldDelegate && KeyBoard is Shown
+extension ShotCommentingVC : UITextFieldDelegate {
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        commentTextField.resignFirstResponder()
+        return true
+    }
+    
+    func keyboardWillShow(notification: Notification) {
+        adjustingHeight(show: true, notification: notification )
+    }
+    
+    func keyboardWillHide(notification: Notification) {
+        adjustingHeight(show: false, notification: notification )
+    }
+    
+    func adjustingHeight(show: Bool, notification: Notification) {
+        
+       
+            var userInfo = notification.userInfo!
+            let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        
+            let changeInHeight = (keyboardFrame.height) * (show ? 1 : -1)
+            self.bottomConstraint.constant += changeInHeight
+            UIView.animate(withDuration: 1) {
+                    self.view.layoutIfNeeded()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+                let lastIndex = IndexPath(row: self.arrayOfCommentsData.count - 1, section: 0)
+                self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
+            }
+    }
+        
     
 }
 

@@ -1,10 +1,4 @@
-//
-//  LoginOauthViewController.swift
-//  DribbleAppTest
-//
-//  Created by vrway on 22/05/2017.
-//  Copyright © 2017 vrway. All rights reserved.
-//
+
 
 import UIKit
 import DribbbleSwift
@@ -65,10 +59,6 @@ class LoginOauthViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
 
 }

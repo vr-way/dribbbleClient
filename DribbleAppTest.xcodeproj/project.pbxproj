@@ -20,6 +20,7 @@
 		EE0E36951EA36A1B00E55ABB /* ShotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */; };
 		EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */; };
 		EE1FAA461ED583440039E624 /* FollowersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1FAA451ED583440039E624 /* FollowersCell.xib */; };
+		EE2FA1EE1EDABA4C00679CB8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */; };
 		EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */; };
 		EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */ = {isa = PBXBuildFile; fileRef = EED089291EA49B4A0087FC34 /* dribbble content */; };
 		EED0892C1EA4DC4D0087FC34 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0892B1EA4DC4C0087FC34 /* avatar.png */; };
@@ -85,6 +86,7 @@
 		EE0E36931EA36A1B00E55ABB /* ShotViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotViewCell.swift; path = ViewControllers/ShotVieweringVC/ShotViewCell.swift; sourceTree = "<group>"; };
 		EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShotViewCell.xib; path = ViewControllers/ShotVieweringVC/ShotViewCell.xib; sourceTree = "<group>"; };
 		EE1FAA451ED583440039E624 /* FollowersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FollowersCell.xib; path = ProfileVieweringVC/FollowersCell.xib; sourceTree = "<group>"; };
+		EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = ViewControllers/Servises/Utilities.swift; sourceTree = "<group>"; };
 		EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FPAHRIq0DCo.jpg; sourceTree = "<group>"; };
 		EED089291EA49B4A0087FC34 /* dribbble content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "dribbble content"; sourceTree = "<group>"; };
 		EED0892B1EA4DC4C0087FC34 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				EED089421EA676C00087FC34 /* Dribbble */,
+				EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */,
 			);
 			name = Servises;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				EEF9BEAE1ED48B6C00AAB5E8 /* LikesCell.swift in Sources */,
 				EEFD8BAA1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.swift in Sources */,
 				EEFD8BA31ECCD31A009A8F46 /* ShotCommentingVC.swift in Sources */,
+				EE2FA1EE1EDABA4C00679CB8 /* Utilities.swift in Sources */,
 				EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */,
 				EEFD8BB31ECEDFAC009A8F46 /* PopUpViewController.swift in Sources */,
 				EED089451EA6771F0087FC34 /* DribbbleFeedItem.swift in Sources */,
