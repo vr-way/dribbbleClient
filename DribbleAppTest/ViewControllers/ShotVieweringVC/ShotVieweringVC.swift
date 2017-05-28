@@ -5,8 +5,7 @@ class ShotVieweringVC: UITableViewController {
     @IBOutlet weak var settingsButton: UIBarButtonItem!
 
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
-        openSettings()
-        MySingleton.shared.settingsButtonPressed = true
+        settingsTapHandler()
     }
 
   
@@ -87,14 +86,23 @@ class ShotVieweringVC: UITableViewController {
 
     }
 
-    func openSettings(){
-        if  !MySingleton.shared.settingsButtonPressed {
-            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpId") as! PopUpViewController
-            self.addChildViewController(popOverVC)
-            popOverVC.view.frame =  self.tableView.frame
-            self.tableView.addSubview(popOverVC.view)
-            popOverVC.didMove(toParentViewController: self)
+    private var settingsVC: PopUpViewController?
+    private func settingsTapHandler(){
+        if let settings = settingsVC {
+            settings.dismiss(animated: true)
+            settingsVC = nil
+            return
         }
+        
+        
+        
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpId") as! PopUpViewController
+        
+        popOverVC.modalTransitionStyle = .crossDissolve
+        popOverVC.modalPresentationStyle = .overCurrentContext
+        present(popOverVC, animated: true, completion: nil)
+        
+        settingsVC = popOverVC
     }
     
     func refreshInvoked(_ sender: AnyObject) {

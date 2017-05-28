@@ -31,7 +31,7 @@ class PopUpViewController: UIViewController {
 
         hdSegmentalControl.selectedSegmentIndex =  MySingleton.shared.HDImageFlag == true ? 0 : 1
         gifSegmentalControl.selectedSegmentIndex =  MySingleton.shared.animateFlag == true ? 0 : 1
-        showAnimate()
+        //showAnimate()
     }
 
     func showAnimate() {
@@ -46,14 +46,7 @@ class PopUpViewController: UIViewController {
 
     func hideWithAnimation() {
 
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            self.view.alpha = 0
-        }, completion: {(finished: Bool) in
-        if finished {
-            self.view.removeFromSuperview()
-            }
-        })
+       dismiss(animated: true, completion: nil)
 
     }
 

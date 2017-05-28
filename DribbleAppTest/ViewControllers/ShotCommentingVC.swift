@@ -1,6 +1,7 @@
 import UIKit
 
-class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+
+class ShotCommentingVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var sortCommentConstrain: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -15,7 +16,7 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
         self.view.endEditing(true)
 
     }
-    var arrayOfCommentsData = [DribbleFeedComments ]()
+    fileprivate var arrayOfCommentsData = [DribbleFeedComments ]()
     let alertNoComments = UIAlertController(title: "Ooups", message: "There isn`t any commets to this shot.", preferredStyle: UIAlertControllerStyle.alert)
 
     fileprivate struct Const {
@@ -42,18 +43,12 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
 
         self.tableView.estimatedRowHeight = 2
         self.tableView.rowHeight = UITableViewAutomaticDimension
-
+        
         let shotId = MySingleton.shared.shotId
         fetchComments(shotID: shotId)
     }
 
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfCommentsData.count
-    }
+   
 
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -68,23 +63,27 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
 
     func keyboardWillShow(notification: Notification) {
         print("keyboard is shown")
-     adjustingHeight(show: true, notification: notification )
+        adjustingHeight(show: true, notification: notification )
     }
 
     func keyboardWillHide(notification: Notification) {
         print("keyboard is hided")
-       adjustingHeight(show: false, notification: notification )
+        adjustingHeight(show: false, notification: notification )
     }
 
     func adjustingHeight(show: Bool, notification: Notification) {
-            var userInfo = notification.userInfo!
-            let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var userInfo = notification.userInfo!
+        let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         //TODO: set right timeout of animationDurarition
-            let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-            let changeInHeight = (keyboardFrame.height + 0) * (show ? 1 : -1)
-            UIView.animate(withDuration: animationDurarion, animations: { () -> Void in
-            self.bottomConstraint.constant += changeInHeight
-        })
+        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+        let changeInHeight = (keyboardFrame.height + 0) * (show ? 1 : -1)
+        self.bottomConstraint.constant += changeInHeight
+        let lastIndex = IndexPath(row: self.arrayOfCommentsData.count - 1, section: 0)
+        self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
+        
+        UIView.animate(withDuration: 1) { 
+            self.view.layoutIfNeeded()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,7 +97,8 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        commentTextField.resignFirstResponder()
+        //commentTextField.resignFirstResponder()
+        
     }
 
     func fetchComments(shotID: String) {
@@ -122,3 +122,28 @@ class ShotCommentingVC: UIViewController, UITextFieldDelegate, UITableViewDelega
     }
 
 }
+
+
+//MARK: Table view delegate
+extension ShotCommentingVC: UITableViewDelegate {
+    
+}
+
+//MARK: Table view datasource 
+extension ShotCommentingVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //TODO: return your view
+        return nil
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayOfCommentsData.count
+    }
+    
+}
+
