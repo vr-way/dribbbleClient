@@ -53,6 +53,8 @@ class ShotVieweringVC: UITableViewController {
         cell.onLabelTap = { _ in
             let shotCommentsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
             self.navigationController?.pushViewController(shotCommentsVC, animated: true)
+         
+            MySingleton.shared.userNickname = self.arrayOfCellData[indexPath.section].authotUsername
         }
         return cell
     }

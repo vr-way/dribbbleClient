@@ -68,7 +68,7 @@ class ShotViewCell: UITableViewCell {
         
         self.viewTitleCancas.isHidden = data.description.characters.count == 0 ? true : false
         
-        MySingleton.shared.userNickname = data.authotUsername
+        
     }
     
     
