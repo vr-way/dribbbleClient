@@ -137,6 +137,7 @@
                 <outlet property="authorAvatar" destination="et1-FE-Oho" id="EU3-ks-aGN"/>
                 <outlet property="authorName" destination="kGa-R8-mf7" id="QwH-Ea-9f7"/>
                 <outlet property="descriptionUnderText" destination="TDF-nh-vVX" id="btM-R2-WVS"/>
+                <outlet property="likeButtonOutlet" destination="fbn-iB-hXy" id="oFJ-6h-Pwh"/>
                 <outlet property="likeCounter" destination="rJa-Lr-DQI" id="7xP-qq-gn5"/>
                 <outlet property="mainLabelText" destination="btK-4g-1Qe" id="db2-gq-UYN"/>
                 <outlet property="mainViewImage" destination="O5x-pA-rxY" id="vva-yp-zeq"/>

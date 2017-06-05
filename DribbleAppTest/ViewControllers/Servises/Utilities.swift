@@ -5,7 +5,7 @@ import Foundation
 func removeHtmlTags(string: String) -> String {
     
     var string = string; string = string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-    let characters = ["&#8217;": "'", "&#8220;": "“", "[&hellip;]": "...", "&#038;": "&", "&#8230;": "...", "&amp;": "&"]
+    let characters = ["&#8217;": "'", "&#8220;": "“", "[&hellip;]": "...", "&#038;": "&", "&#8230;": "...", "&amp;": "&", "&quot;":"'"]
     for (code, character) in characters {
         string = string.replacingOccurrences(of: code, with: character, options: .caseInsensitive, range: nil)
     }
@@ -44,3 +44,8 @@ func timePastFrom (dateFromJSON: String) -> String {
         return "Sorry, we don`t know date of the post :("
     }
 }
+
+
+
+
+

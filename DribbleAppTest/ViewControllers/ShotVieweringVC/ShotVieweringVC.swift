@@ -1,9 +1,33 @@
 import UIKit
+//import DribbbleSwift
+
 
 class ShotVieweringVC: UITableViewController {
 
     @IBOutlet weak var settingsButton: UIBarButtonItem!
+    @IBOutlet weak var signUpButton: UIBarButtonItem!
 
+    @IBAction func signUpButtonPressed(_ sender: UIBarButtonItem) {
+        stateOFSignUpButton = !stateOFSignUpButton
+        if stateOFSignUpButton {
+            print("sign in")
+        DribbbleServises.instance.doOAuthDribbble()
+        } else{
+            print(" sign out ")
+            DribbbleServises.instance.oauthUserToken = ""
+            DribbbleServises.instance.isUserSignUp = false
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    
+    
+    var stateOFSignUpButton: Bool = true {
+        didSet{
+            self.signUpButton.title = stateOFSignUpButton ? "Sign out" : "Sign in"
+        }
+    }
+   
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         settingsTapHandler()
     }
@@ -12,6 +36,8 @@ class ShotVieweringVC: UITableViewController {
     var arrayOfCellData: [DribbbleFeedItem] = []
     var loadMoreStatus = false
     var pageNum = 1
+    
+ 
 
     fileprivate struct Const {
         static let identifier = "cellIdentifier"
@@ -21,7 +47,12 @@ class ShotVieweringVC: UITableViewController {
     
     
     override func viewDidLoad() {
-
+     
+        stateOFSignUpButton = DribbbleServises.instance.isUserSignUp
+      
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
         let nib = UINib(nibName: "ShotViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Const.identifier)
         loadShots(page: 1)
@@ -53,9 +84,44 @@ class ShotVieweringVC: UITableViewController {
         cell.onLabelTap = { _ in
             let shotCommentsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
             self.navigationController?.pushViewController(shotCommentsVC, animated: true)
-         
             MySingleton.shared.userNickname = self.arrayOfCellData[indexPath.section].authotUsername
         }
+        
+        
+     //   cell.likeButtonOutlet.isSelected = DribbbleServises.instance.isUserSignUp ? DribbbleServises.instance.checkIfShotIsLiked(id: self.arrayOfCellData[0].shotId) : false
+
+        cell.onLikeTap = { _ in
+            print("likeTapped \(self.arrayOfCellData[indexPath.section].shotId)")
+            if DribbbleServises.instance.isUserSignUp {
+                
+           
+                if !self.arrayOfCellData[indexPath.section].likeButtonState {
+    //MARK: Like shot
+                    DribbbleServises.instance.likeShot(id: self.arrayOfCellData[indexPath.section].shotId)
+                
+                    self.arrayOfCellData[indexPath.section].likes = self.arrayOfCellData[indexPath.section].likes + 1
+                    cell.likeCounter.text = String(Int(cell.likeCounter.text!)! + 1)
+                    
+                    self.arrayOfCellData[indexPath.section].likeButtonState = true
+                    cell.likeButtonOutlet.isSelected = true
+                } else {
+    //MARK: dislikeShot
+                    DribbbleServises.instance.dislikeShot(id: self.arrayOfCellData[indexPath.section].shotId)
+                    self.arrayOfCellData[indexPath.section].likes = self.arrayOfCellData[indexPath.section].likes - 1
+                    cell.likeCounter.text = String(Int(cell.likeCounter.text!)! - 1)
+                    
+                    self.arrayOfCellData[indexPath.section].likeButtonState = false
+                    cell.likeButtonOutlet.isSelected = false
+                }
+            }else{
+                print("signUP First")
+                self.showAlert(title: "Warning", message: "Authorization is required")
+                
+            }
+       
+        }
+   
+        
         return cell
     }
 
@@ -128,5 +194,14 @@ class ShotVieweringVC: UITableViewController {
             })
         }
     }
+    
+    func showAlert(title : String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+            // perhaps use action.title here
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+
 
 }

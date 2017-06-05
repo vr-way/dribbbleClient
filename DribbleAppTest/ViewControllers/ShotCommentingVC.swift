@@ -150,7 +150,7 @@ extension ShotCommentingVC : UITextFieldDelegate {
             UIView.animate(withDuration: 1) {
                     self.view.layoutIfNeeded()
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(30)) {
                 let lastIndex = IndexPath(row: self.arrayOfCommentsData.count - 1, section: 0)
                 self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
             }

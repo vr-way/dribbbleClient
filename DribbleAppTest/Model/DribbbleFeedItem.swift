@@ -14,7 +14,8 @@ class MySingleton {
 struct DribbbleFeedItem {
 
     let shotUrl: URL?
-    let likes: UInt
+    var likes: UInt
+    var likeButtonState: Bool
     let authorName: String
     let authotUsername: String
     let authorAvatarURL: URL?
@@ -31,7 +32,8 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
 
     let title = input["title"].stringValue
     let description = input["description"].stringValue
-    let likesCount = input["likes_count"].stringValue
+    var likesCount = input["likes_count"].stringValue
+    var likeButtonState = false
     let authorUsername = input["user", "username"].stringValue
     let authorName = input["user", "name"].stringValue
     let authorAvatarURL: URL = URL(string:   input["user", "avatar_url"].stringValue)!
@@ -40,7 +42,7 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
     let animatedImage = input["animated"].bool
     let id = input["id"].stringValue
 
-    let item = DribbbleFeedItem(shotUrl: shotImageURL, likes: likesCountUInt, authorName: authorName, authotUsername: authorUsername, authorAvatarURL: authorAvatarURL, description: description, title: title, animated: animatedImage!, shotId: id)
+    let item = DribbbleFeedItem(shotUrl: shotImageURL, likes: likesCountUInt, likeButtonState: likeButtonState, authorName: authorName, authotUsername: authorUsername, authorAvatarURL: authorAvatarURL, description: description, title: title, animated: animatedImage!, shotId: id)
 
     if MySingleton.shared.animateFlag {
         return item

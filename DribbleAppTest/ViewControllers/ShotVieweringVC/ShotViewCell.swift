@@ -19,10 +19,16 @@ class ShotViewCell: UITableViewCell {
     @IBOutlet weak var viewTitleCancas: ShotViewCell!
 
     @IBAction func likeButton2(_ sender: UIButton) {
-
+        
+         onLikeTap!()
+         //likeCounter.text = String(Int(likeCounter.text!)! + 1)
+      
+        
     }
+    @IBOutlet weak var likeButtonOutlet: UIButton!
 
     var onLabelTap: (() -> Void)?
+    var onLikeTap: (() -> Void)?
     
     
 
@@ -32,6 +38,12 @@ class ShotViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // likeButtonOutlet.setBackgroundImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+        
+        if likeButtonOutlet != nil {
+            likeButtonOutlet.setBackgroundImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+            likeButtonOutlet.setBackgroundImage(#imageLiteral(resourceName: "like_pressed"), for: UIControlState.selected)
+        }
         selectionStyle = .none
         
         if (authorName) != nil {
@@ -67,6 +79,9 @@ class ShotViewCell: UITableViewCell {
         mainViewImage.sd_setImage(with: data.shotUrl, placeholderImage: UIImage(named: "shotIsLoading"))
         
         self.viewTitleCancas.isHidden = data.description.characters.count == 0 ? true : false
+        
+        
+        
         
         
     }

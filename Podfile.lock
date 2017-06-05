@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.4.0)
   - DribbbleSwift (0.3.1)
+  - MBProgressHUD (1.0.0)
   - OAuthSwift (1.1.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - DribbbleSwift (from `https://github.com/gkye/DribbbleSwift.git`)
+  - MBProgressHUD (~> 1.0.0)
   - OAuthSwift (~> 1.1.0)
   - SDWebImage (~> 3.8)
   - SwiftyJSON
@@ -28,11 +30,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   DribbbleSwift: 9aab6461dc20546bd1add706ff687286f9ebe204
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   OAuthSwift: 6e3a103b3e5639411769cc7e199ec7e14bd1547f
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TextAttributes: 45b2713a1d174c377d320b51129c304eac381638
 
-PODFILE CHECKSUM: 3a28f6100023457e736eabe3121a0d157dfa64fb
+PODFILE CHECKSUM: 279d81ea582a1fa916b7ee20dcaf1282303bf2d4
 
 COCOAPODS: 1.2.1

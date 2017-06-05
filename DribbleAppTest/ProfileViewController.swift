@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController {
        
         userNickname = MySingleton.shared.userNickname
         viewAppearance()
-        setDataBio()
+        updateDataBio()
         fetchFollowers(userNick: userNickname, page: followersPageNum)
         fetchLikes(userNick: userNickname, page: likesPageNum)
     }
@@ -82,16 +82,27 @@ class ProfileViewController: UIViewController {
 
     }
 
-    func setDataBio() {
+    func updateDataBio() {
 
-        UserDS.getUser(userNickname) { _, user in
-
-            self.userName.text = user?.name!
-            self.userLocation.text = user?.location!
-            self.userBio.text = removeHtmlTags(string: (user?.bio)!)
+        UserDS.getUser(userNickname) {[weak self] _, user in
+            guard let `self` = self else { return }
+            
+            self.userName.text = user?.name
+            self.userLocation.text = user?.location
+            self.userBio.text = (user?.bio).map(removeHtmlTags)
             self.userAvatar.sd_setImage(with: URL(string: (user?.avatar_url!)!))
             self.userPRO.isHidden = (user?.pro)! ? false : true
-
+            
+            //TODO: update table view header frame base on user data
+            let bioSize = CGSize(width: self.userBio.bounds.width, height: CGFloat.greatestFiniteMagnitude)
+            if let name = user?.name {
+                let reaultSize = (name as NSString).boundingRect(with: bioSize, options: [.usesLineFragmentOrigin], attributes: nil, context: nil)
+                
+            }
+            
+            
+            //TODO UPDATE FRAME OF VIEWTITLE
+            
         }
 
     }

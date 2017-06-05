@@ -7,58 +7,52 @@
 //
 
 import UIKit
-import TextAttributes
+
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var userNameTextField: UITextField!
-
-    @IBOutlet weak var userPasswordTextFiels: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBAction func onTapButton(_ sender: UIButton) {
-
-        if userNameTextField.text == "admin" && userPasswordTextFiels.text == "password" {
-            print("all is OK")
-        } else {
-            print("wrong login|password ")
-
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        DribbbleServises.instance.doOAuthDribbble {[weak self] result in
+            switch (result) {
+            case .success:
+                self?.pushToShotViewController()
+            case .error(let error):
+                //TODO: show alert view for user
+                DribbleAPIErrorHandler.handleDribbleError(error: error)
+            }
         }
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewDisign()
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func viewDisign() {
-
-        loginButton.layer.cornerRadius = 30.0
-        self.view.bringSubview(toFront: self.loginButton)
-        let userNmaeAtributes = TextAttributes()
-
-        userNmaeAtributes.foregroundColor = .white
-        let userNamePlaceholder = NSAttributedString(string: "Username", attributes: userNmaeAtributes)
-        let userPassPlaceholder = NSAttributedString(string: "Password", attributes: userNmaeAtributes)
-        self.userNameTextField.attributedPlaceholder = userNamePlaceholder
-        self.userPasswordTextFiels.attributedPlaceholder = userPassPlaceholder
+        viewApearence()
+      
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    */
+  
 
+
+    private func viewApearence() {
+        signUpButton.layer.cornerRadius = 25
+    }
+   
+
+    func pushToShotViewController() {
+        let shotVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shotViewController") as! ShotVieweringVC
+        //self.present(shotVC, animated: true, completion: nil)
+         self.navigationController?.pushViewController(shotVC, animated: true)
+        print("push to")
+
+    }
+    
+    func printSmth(){
+        print("print")
+    }
 }
