@@ -1,6 +1,5 @@
-
-
 import Foundation
+import UIKit
 
 func removeHtmlTags(string: String) -> String {
     
@@ -47,5 +46,37 @@ func timePastFrom (dateFromJSON: String) -> String {
 
 
 
+extension UIApplication {
+    static var topViewController: UIViewController? {
+        return UIApplication.shared.topViewController
+    }
+    
+    var topViewController: UIViewController? {
+        guard let rootController = self.keyWindow?.rootViewController else {
+            return nil
+        }
+        return UIViewController.topViewController(rootController)
+    }
+}
 
+extension UIViewController {
+    
+    static func topViewController(_ viewController: UIViewController) -> UIViewController {
+        guard let presentedViewController = viewController.presentedViewController else {
+            return viewController
+        }
+        
+        if let navigationController = presentedViewController as? UINavigationController {
+            if let visibleViewController = navigationController.visibleViewController {
+                return topViewController(visibleViewController)
+            }
+        } else if let tabBarController = presentedViewController as? UITabBarController {
+            if let selectedViewController = tabBarController.selectedViewController {
+                return topViewController(selectedViewController)
+            }
+        }
+        
+        return topViewController(presentedViewController)
+    }
+}
 

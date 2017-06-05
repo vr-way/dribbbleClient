@@ -21,6 +21,7 @@
 		EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */; };
 		EE1FAA461ED583440039E624 /* FollowersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1FAA451ED583440039E624 /* FollowersCell.xib */; };
 		EE236CE61EE5D07000E16A82 /* DribbleAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE236CE51EE5D07000E16A82 /* DribbleAPIErrorHandler.swift */; };
+		EE236CE81EE5E6ED00E16A82 /* AuthentificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */; };
 		EE2FA1EE1EDABA4C00679CB8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */; };
 		EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */; };
 		EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */ = {isa = PBXBuildFile; fileRef = EED089291EA49B4A0087FC34 /* dribbble content */; };
@@ -87,6 +88,7 @@
 		EE0E36941EA36A1B00E55ABB /* ShotViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShotViewCell.xib; path = ViewControllers/ShotVieweringVC/ShotViewCell.xib; sourceTree = "<group>"; };
 		EE1FAA451ED583440039E624 /* FollowersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FollowersCell.xib; path = ProfileVieweringVC/FollowersCell.xib; sourceTree = "<group>"; };
 		EE236CE51EE5D07000E16A82 /* DribbleAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleAPIErrorHandler.swift; path = ViewControllers/Servises/DribbleAPIErrorHandler.swift; sourceTree = "<group>"; };
+		EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthentificationVC.swift; sourceTree = "<group>"; };
 		EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = ViewControllers/Servises/Utilities.swift; sourceTree = "<group>"; };
 		EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FPAHRIq0DCo.jpg; sourceTree = "<group>"; };
 		EED089291EA49B4A0087FC34 /* dribbble content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "dribbble content"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		EED089421EA676C00087FC34 /* Dribbble */ = {
 			isa = PBXGroup;
 			children = (
+				EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */,
 				EED0893F1EA674F60087FC34 /* DribbleServises.swift */,
 			);
 			name = Dribbble;
@@ -637,6 +640,7 @@
 				EEF9BEAA1ED47DB400AAB5E8 /* FollowersCell.swift in Sources */,
 				EEF9BEA51ED3094B00AAB5E8 /* ProfileViewController.swift in Sources */,
 				EE0E368E1EA295ED00E55ABB /* ShotVieweringVC.swift in Sources */,
+				EE236CE81EE5E6ED00E16A82 /* AuthentificationVC.swift in Sources */,
 				EE0E36951EA36A1B00E55ABB /* ShotViewCell.swift in Sources */,
 				EED089381EA64B420087FC34 /* LoginViewController.swift in Sources */,
 				EE0E365B1EA2925000E55ABB /* AppDelegate.swift in Sources */,
@@ -737,7 +741,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -782,7 +786,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

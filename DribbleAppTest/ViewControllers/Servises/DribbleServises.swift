@@ -109,17 +109,17 @@ class DribbbleServises: DribbbleServisesProtocol {
         }
     }
     
-    func checkIfShotIsLiked(id: String) -> Bool {
+    func checkIfShotIsLiked(id: String, callback: @escaping (_ isLiked: Bool) -> Void) -> DataRequest {
         
-        Alamofire.request("https://api.dribbble.com/v1/shots/\(id)/like?access_token=\(self.oauthUserToken)", method:.get).responseJSON { response in
+        let req = Alamofire.request("https://api.dribbble.com/v1/shots/\(id)/like?access_token=\(self.oauthUserToken)", method:.get).responseJSON { response in
             
             if response.result.value != nil{
-               let  callback = true
+               callback(true)
             } else {
-               let callback = false
+               callback(false)
             }
         }
-     return false
+        return req
     }
     
     //postComment
@@ -141,7 +141,7 @@ class DribbbleServises: DribbbleServisesProtocol {
         }
 
     }
-    
+
     
     var oauthswift: OAuthSwift?
     var oauthUserToken = String()
@@ -159,7 +159,10 @@ class DribbbleServises: DribbbleServisesProtocol {
         
         self.oauthswift = oauthswift
         oauthswift.allowMissingStateCheck = true
-        oauthswift.authorizeURLHandler = OAuthSwiftOpenURLExternally.sharedInstance
+        
+        let authVC = AuthentificationNVC(title: "Dribble")
+        oauthswift.authorizeURLHandler = authVC
+        
         let _ = oauthswift.authorize(
             withCallbackURL: URL(string: "dribbleApp://oauth-callback/dribbble")!, scope: "public+write+comment", state: "",
             success: { credential, response, parameters in
@@ -171,22 +174,21 @@ class DribbbleServises: DribbbleServisesProtocol {
                 //                URLCache.shared.removeAllCachedResponses()
                 //                URLCache.shared.diskCapacity = 0
                 //                URLCache.shared.memoryCapacity = 0
+                authVC.dismiss(animated: true, completion: nil)
                 
         },
             failure: { error in
                 callback(Result.error(error))
                 self.isUserSignUp = false
+                authVC.dismiss(animated: true, completion: nil)
                 print(error.description)
         })
 
     }
     
   
+    func postComment(_ comment: String, callback: @escaping (Result<()>) -> Void = { _ in }) {
     
-    
-    
-    
-    
-    
+    }
     
 }

@@ -86,9 +86,6 @@ class ShotVieweringVC: UITableViewController {
             self.navigationController?.pushViewController(shotCommentsVC, animated: true)
             MySingleton.shared.userNickname = self.arrayOfCellData[indexPath.section].authotUsername
         }
-        
-        
-     //   cell.likeButtonOutlet.isSelected = DribbbleServises.instance.isUserSignUp ? DribbbleServises.instance.checkIfShotIsLiked(id: self.arrayOfCellData[0].shotId) : false
 
         cell.onLikeTap = { _ in
             print("likeTapped \(self.arrayOfCellData[indexPath.section].shotId)")

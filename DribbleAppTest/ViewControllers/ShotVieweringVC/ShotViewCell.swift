@@ -1,6 +1,6 @@
 import UIKit
 import SDWebImage
-
+import Alamofire
 
 class ShotViewCell: UITableViewCell {
 
@@ -30,7 +30,7 @@ class ShotViewCell: UITableViewCell {
     var onLabelTap: (() -> Void)?
     var onLikeTap: (() -> Void)?
     
-    
+    private var likeReq: DataRequest?
 
 
 
@@ -83,16 +83,18 @@ class ShotViewCell: UITableViewCell {
         
         
         
-        
+        if DribbbleServises.instance.isUserSignUp {
+            likeReq = DribbbleServises.instance.checkIfShotIsLiked(id: data.shotId) {[weak self] isLiked in
+                self?.likeButtonOutlet.isSelected = isLiked
+            }
+        } else {
+            likeButtonOutlet.isSelected = false
+        }
     }
     
     
-    
-    
-   
-    
-    
- 
-
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        likeReq?.cancel()
+    }
 }
