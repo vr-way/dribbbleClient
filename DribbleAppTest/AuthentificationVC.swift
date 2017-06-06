@@ -95,6 +95,7 @@ private class AuthentificationVC: UIViewController {
     
     func close() {
         super.dismiss(animated: true, completion: nil)
+       
     }
 }
 

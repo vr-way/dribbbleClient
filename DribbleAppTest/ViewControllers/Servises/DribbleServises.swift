@@ -2,6 +2,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import OAuthSwift
+import KeychainSwift
 
 
 enum Result<T> {
@@ -10,8 +11,6 @@ enum Result<T> {
 }
 
 protocol DribbbleServisesProtocol {
-
-   // func login(callback: (Result<()>) -> Void)
     func getShotsFeed(page: Int, successCallback: @escaping ([DribbbleFeedItem]) -> Void, errorCallback: @escaping (Error) -> Void )
 }
 
@@ -38,9 +37,7 @@ class DribbbleServises: DribbbleServisesProtocol {
     static let instance: DribbbleServises = DribbbleServises()
     private init() {}
 
-    // MARK: public
-//    func login(callback: (Result<()>) -> Void) {
-//    }
+// MARK: public
 
     func getShotsFeed(page: Int, successCallback: @escaping ([DribbbleFeedItem]) -> Void, errorCallback: @escaping (Error) -> Void ) {
 
@@ -58,9 +55,9 @@ class DribbbleServises: DribbbleServisesProtocol {
         }
     }
 
-    func getComment(shotId: String, successCallback: @escaping ([DribbleFeedComments]) -> Void, errorCallback: @escaping (Error) -> Void ) {
+    func getComment(shotId: String, page: Int, successCallback: @escaping ([DribbleFeedComments]) -> Void, errorCallback: @escaping (Error) -> Void ) {
 
-      let url = Config.SHOT_URL + "/" + shotId + "/comments?access_token=" + Config.ACCESS_TOKEN
+      let url = Config.SHOT_URL + "/" + shotId + "/comments"  + "?page=" + String(page) + "&access_token=" + Config.ACCESS_TOKEN
 
         getJSON (url: url) { response in
             switch response {
@@ -76,29 +73,18 @@ class DribbbleServises: DribbbleServisesProtocol {
 
     
 //MARK: likeShot
-    
-    
-   
-    
     func likeShot(id:String) {
         
-        var answer: Bool = false
+       
         
         if !oauthUserToken.isEmpty{
             
-            Alamofire.request("https://api.dribbble.com/v1/shots/\(id)/like?access_token=\(self.oauthUserToken)", method:.post).responseJSON { response in
-            print(response.result)
-                if let jsonResponse = response.result.value {
-                    let json = JSON(jsonResponse)
-                    let message = json["message"].stringValue
-                    answer = message == "Bad credentials." ? false : true
-                }
-            }
+            Alamofire.request("https://api.dribbble.com/v1/shots/\(id)/like?access_token=\(self.oauthUserToken)", method:.post).responseJSON
         } else {
             print ("need signUP")
         }
         
-        //return answer
+       
     }
     
     
@@ -122,9 +108,33 @@ class DribbbleServises: DribbbleServisesProtocol {
         return req
     }
     
-    //postComment
+    
+    
+//MARK: postComment
 
-    // MARK: private methods
+    
+    func postComment(comment: String, id: String, callback: @escaping (Result<()>) -> Void = { _ in }) {
+        
+    
+        
+        let urlString = "https://api.dribbble.com/v1/shots/\(id)/comments?access_token=\(self.oauthUserToken)"
+        
+        Alamofire.request(urlString, method: .post, parameters: ["body": comment],encoding: JSONEncoding.default, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+               // print(response)
+                  callback(Result.success())
+                break
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
+    
+// MARK: private methods
     private func getJSON(url: String, calback: @escaping (Result<JSON>) -> Void) {
 
         Alamofire.request(url).responseJSON { response in
@@ -142,11 +152,11 @@ class DribbbleServises: DribbbleServisesProtocol {
 
     }
 
-    
+//MARK: Authorization
     var oauthswift: OAuthSwift?
     var oauthUserToken = String()
     var isUserSignUp =  false
-    
+    let keychain = KeychainSwift()
     
     func doOAuthDribbble(callback: @escaping (Result<()>) -> Void = { _ in }){
         let oauthswift = OAuth2Swift(
@@ -168,12 +178,17 @@ class DribbbleServises: DribbbleServisesProtocol {
             success: { credential, response, parameters in
                 self.oauthUserToken = credential.oauthToken
                 self.isUserSignUp = true
+                self.keychain.set(credential.oauthToken, forKey:"outhUserTokenKeyChain")
+                self.keychain.set(true, forKey:"UserSignUpKey")
+                
+                
+                
+                 
                 callback(Result.success())
-                //                LoginViewController().pushToShotViewController()
-                //  LoginViewController().pushToShotViewController()
-                //                URLCache.shared.removeAllCachedResponses()
-                //                URLCache.shared.diskCapacity = 0
-                //                URLCache.shared.memoryCapacity = 0
+             
+            
+                
+                
                 authVC.dismiss(animated: true, completion: nil)
                 
         },
@@ -187,8 +202,6 @@ class DribbbleServises: DribbbleServisesProtocol {
     }
     
   
-    func postComment(_ comment: String, callback: @escaping (Result<()>) -> Void = { _ in }) {
-    
-    }
+   
     
 }

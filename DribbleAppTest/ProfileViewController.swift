@@ -4,6 +4,7 @@ import SDWebImage
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var viewFrame: UIView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userLocation: UILabel!
@@ -95,12 +96,13 @@ class ProfileViewController: UIViewController {
             
             //TODO: update table view header frame base on user data
             let bioSize = CGSize(width: self.userBio.bounds.width, height: CGFloat.greatestFiniteMagnitude)
-            if let name = user?.name {
-                let reaultSize = (name as NSString).boundingRect(with: bioSize, options: [.usesLineFragmentOrigin], attributes: nil, context: nil)
-                
+            if let bio = user?.bio {
+                let resaultSize = (bio as NSString).boundingRect(with: bioSize, options: [.usesLineFragmentOrigin], attributes: nil, context: nil)
+              print(resaultSize)
             }
             
-            
+              //self.viewFrame.frame = CGRect(x: 0, y: 0, width: 279, height: 300 )
+          
             //TODO UPDATE FRAME OF VIEWTITLE
             
         }

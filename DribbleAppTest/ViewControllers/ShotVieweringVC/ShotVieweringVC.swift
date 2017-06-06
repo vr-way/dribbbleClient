@@ -10,13 +10,19 @@ class ShotVieweringVC: UITableViewController {
     @IBAction func signUpButtonPressed(_ sender: UIBarButtonItem) {
         stateOFSignUpButton = !stateOFSignUpButton
         if stateOFSignUpButton {
-            print("sign in")
-        DribbbleServises.instance.doOAuthDribbble()
-        } else{
-            print(" sign out ")
-            DribbbleServises.instance.oauthUserToken = ""
-            DribbbleServises.instance.isUserSignUp = false
-            self.navigationController?.popViewController(animated: true)
+            DribbbleServises.instance.doOAuthDribbble(){[weak self] result in
+                switch (result) {
+                case .success:
+                     self?.tableView.reloadData()
+                case .error( _): break
+                }
+            }
+           
+        } else {
+    
+            let shotVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+            self.navigationController?.pushViewController(shotVC, animated: true)
+            singIn(flag: false)
         }
     }
     
@@ -48,10 +54,10 @@ class ShotVieweringVC: UITableViewController {
     
     override func viewDidLoad() {
      
-        stateOFSignUpButton = DribbbleServises.instance.isUserSignUp
+        //stateOFSignUpButton = DribbbleServises.instance.isUserSignUp
       
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
         
         let nib = UINib(nibName: "ShotViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Const.identifier)
@@ -63,6 +69,15 @@ class ShotVieweringVC: UITableViewController {
         tableView?.addSubview(refreshControl)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+       
+            
+        stateOFSignUpButton = DribbbleServises.instance.isUserSignUp
+        
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

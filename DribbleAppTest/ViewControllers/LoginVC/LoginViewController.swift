@@ -46,13 +46,11 @@ class LoginViewController: UIViewController {
 
     func pushToShotViewController() {
         let shotVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shotViewController") as! ShotVieweringVC
-        //self.present(shotVC, animated: true, completion: nil)
+   
          self.navigationController?.pushViewController(shotVC, animated: true)
-        print("push to")
+      
 
     }
     
-    func printSmth(){
-        print("print")
-    }
+   
 }

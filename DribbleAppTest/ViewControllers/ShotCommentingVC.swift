@@ -14,6 +14,8 @@ class ShotCommentingVC: UIViewController  {
     }
     @IBAction func postButtonPressed(_ sender: UIButton) {
         self.view.endEditing(true)
+        postComment(comment: commentTextField.text)
+        self.commentTextField.text = ""
 
     }
     
@@ -31,13 +33,16 @@ class ShotCommentingVC: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
+        //automaticallyAdjustsScrollViewInsets = false
         title = "Comments"
         
         
         alertNoComments.addAction(UIAlertAction(title: "Be first!", style: UIAlertActionStyle.default, handler: nil))
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        
+        //commentTextField.addTarget(self, action: "myTargetFunction:", for: UIControlEvents.touchDown)
+        
 
         self.commentTextField.delegate = self
         self.tableView.delegate = self
@@ -50,33 +55,78 @@ class ShotCommentingVC: UIViewController  {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         let shotId = MySingleton.shared.shotId
-        fetchComments(shotID: shotId)
+        fetchComments(shotID: shotId, scrollDown: false)
+        
+       
     }
 
 
-   
+  
 
-    func fetchComments(shotID: String) {
+    var pageNum = 0
+    var loadMoreStatus = false
 
-        DribbbleServises.instance.getComment(shotId: shotID, successCallback: { [weak self] comments in
-            guard let `self` = self else { return }
+    func fetchComments(shotID: String, scrollDown: Bool) {
 
-            self.arrayOfCommentsData += comments
-                if self.arrayOfCommentsData.isEmpty {
-                    print("array is empty")
-                    self.present(self.alertNoComments, animated: true, completion: nil)
-                } else {
-                    self.sortCommentConstrain.constant += 55
+        if !loadMoreStatus {
+            loadMoreStatus = true
+            pageNum += 1
+           
+            
+            DribbbleServises.instance.getComment(shotId: shotID, page: pageNum, successCallback: { [weak self] comments in
+                guard let `self` = self else { return }
+
+                self.arrayOfCommentsData += comments
+                    if self.arrayOfCommentsData.isEmpty {
+                        print("array is empty")
+                        self.present(self.alertNoComments, animated: true, completion: nil)
+                    }
+                self.tableView.reloadData()
+                if scrollDown{
+                     self.scrollDown(delay: 300)
                 }
 
-            self.tableView.reloadData()
-      }, errorCallback: { error in
-        print(error)
-      })
+                self.loadMoreStatus = false
+                }, errorCallback: { error in
+                    print("error")
+            })
 
+        }
+        
+       
     }
 
+    
+    
+    func postComment(comment: String?){
+        if comment != nil {
+            //print(comment!)
+           
+            DribbbleServises.instance.postComment(comment: comment!, id: MySingleton.shared.shotId){ [weak self] result in
+                switch (result) {
+                case .success:
+                    print("reload list")
+                    self?.pageNum = 0
+                    self?.arrayOfCommentsData = [DribbleFeedComments ]()
+                    self?.fetchComments(shotID: MySingleton.shared.shotId, scrollDown: true)
+                    
+                   
+                   
+                case .error(let error):
+                    //TODO: show alert view for user
+                    DribbleAPIErrorHandler.handleDribbleError(error: error)
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
 }
+
+
 
 
 //MARK: Table view delegate
@@ -87,6 +137,23 @@ extension ShotCommentingVC: UITableViewDelegate {
        
         commentTextField.resignFirstResponder()
     }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        //super.scrollViewDidScroll(scrollView)
+//        
+//        let currentOffset = scrollView.contentOffset.y
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+//        let deltaOffset = maximumOffset - currentOffset
+//        
+//        if deltaOffset <= 0 {
+//           // loadShots(page: pageNum)
+//            fetchComments(shotID: MySingleton.shared.shotId)
+//            
+//        }
+//        
+//    }
+
+    
 }
 
 //MARK: Table view datasource 
@@ -111,6 +178,8 @@ extension ShotCommentingVC: UITableViewDataSource {
         if !arrayOfCommentsData.isEmpty {
             let dataItem = arrayOfCommentsData[indexPath.row]
             cell.setCommentData(dataItem)
+            
+            
         }
         return cell
     }
@@ -127,6 +196,7 @@ extension ShotCommentingVC : UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      
         commentTextField.resignFirstResponder()
         return true
     }
@@ -148,14 +218,25 @@ extension ShotCommentingVC : UITextFieldDelegate {
             let changeInHeight = (keyboardFrame.height) * (show ? 1 : -1)
             self.bottomConstraint.constant += changeInHeight
             UIView.animate(withDuration: 1) {
-                    self.view.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(30)) {
-                let lastIndex = IndexPath(row: self.arrayOfCommentsData.count - 1, section: 0)
-                self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
-            }
+        self.scrollDown(delay: 30)
     }
         
     
+    
+    func scrollDown(delay: Int){
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            let lastIndex = IndexPath(row: (self.arrayOfCommentsData.count) - 1, section: 0)
+            print(lastIndex)
+            if  !(self.arrayOfCommentsData.isEmpty){
+                self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
+            }
+        }
+    }
+    
+    func myTargetFunction(textField: UITextField) {
+    print("tap to field")
+    }
 }
 

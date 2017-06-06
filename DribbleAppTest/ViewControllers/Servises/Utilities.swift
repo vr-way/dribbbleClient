@@ -14,8 +14,8 @@ func removeHtmlTags(string: String) -> String {
 
 
 func timePastFrom (dateFromJSON: String) -> String {
-    let hours: Int
-    let minutes: Int
+    var hours: Int
+    var minutes: Int
     
     var  dateOfPost = dateFromJSON.replacingOccurrences(of: "T", with: " ")
     dateOfPost.remove(at: dateFromJSON.index(before: dateFromJSON.endIndex))
@@ -23,20 +23,28 @@ func timePastFrom (dateFromJSON: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
-    let  dateFromString = dateFormatter.date(from: dateOfPost)
+    var  dateFromString = dateFormatter.date(from: dateOfPost)
+    var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     
+   
     if dateFromString != nil {
         
         hours  = Int((dateFromString?.timeIntervalSinceNow)!) / 3600
-        minutes = Int((dateFromString?.timeIntervalSinceNow)!) / 60
+        hours += secondsFromGMT / 3600
+        minutes = Int((dateFromString?.timeIntervalSinceNow)!) / 60  //+ (secondsFromGMT / 3600)
+        minutes += secondsFromGMT / 60
+      
         
         if hours > 0 {
             return "Ooups, post from future ;)"
         } else if hours == -1 {
             return "about \(abs(hours)) hour ago"
-        } else if hours == 0 {
+        } else if hours == 0 && minutes < 0 {
             return "about \(abs(minutes)) minutes ago"
-        } else {
+        } else if minutes == 0 {
+            return "less than a minute ago"
+        }
+        else {
             return "about \(abs(hours)) hours ago"
         }
     } else {
@@ -79,4 +87,26 @@ extension UIViewController {
         return topViewController(presentedViewController)
     }
 }
+
+
+
+func singIn(flag: Bool){
+    if flag{
+        DribbbleServises.instance.isUserSignUp = true
+        DribbbleServises.instance.keychain.set(true, forKey:"UserSignUpKey")
+    } else {
+        DribbbleServises.instance.isUserSignUp = false
+        DribbbleServises.instance.keychain.set(false, forKey:"UserSignUpKey")
+        DribbbleServises.instance.oauthUserToken = ""
+        DribbbleServises.instance.keychain.set("", forKey:"outhUserTokenKeyChain")
+    }
+    
+    
+}
+
+
+
+
+
+
 

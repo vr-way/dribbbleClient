@@ -13,6 +13,7 @@ pod 'TextAttributes'
 pod 'DribbbleSwift', :git => "https://github.com/gkye/DribbbleSwift.git"
 pod 'OAuthSwift', '~> 1.1.0'
 pod 'MBProgressHUD', '~> 1.0.0'
+pod 'KeychainSwift', '~> 8.0'
 
   # Pods for DribbleAppTest
 
