@@ -81,8 +81,6 @@ class ShotViewCell: UITableViewCell {
         self.viewTitleCancas.isHidden = data.description.characters.count == 0 ? true : false
         
         
-        
-        
         if DribbbleServises.instance.isUserSignUp {
             likeReq = DribbbleServises.instance.checkIfShotIsLiked(id: data.shotId) {[weak self] isLiked in
                 self?.likeButtonOutlet.isSelected = isLiked

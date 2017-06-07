@@ -98,11 +98,15 @@ class ProfileViewController: UIViewController {
             let bioSize = CGSize(width: self.userBio.bounds.width, height: CGFloat.greatestFiniteMagnitude)
             if let bio = user?.bio {
                 let resaultSize = (bio as NSString).boundingRect(with: bioSize, options: [.usesLineFragmentOrigin], attributes: nil, context: nil)
-              print(resaultSize)
+             // print(resaultSize.height)
+                let height = resaultSize.height * 2  + 300
+                let width = self.viewFrame.frame.width
+                self.viewFrame.frame = CGRect(x: 0, y: 0, width: width, height: height)
+
+              
             }
             
-              //self.viewFrame.frame = CGRect(x: 0, y: 0, width: 279, height: 300 )
-          
+            
             //TODO UPDATE FRAME OF VIEWTITLE
             
         }

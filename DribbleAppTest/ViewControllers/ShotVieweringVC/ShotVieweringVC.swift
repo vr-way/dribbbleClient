@@ -104,9 +104,9 @@ class ShotVieweringVC: UITableViewController {
 
         cell.onLikeTap = { _ in
             print("likeTapped \(self.arrayOfCellData[indexPath.section].shotId)")
+            
             if DribbbleServises.instance.isUserSignUp {
                 
-           
                 if !self.arrayOfCellData[indexPath.section].likeButtonState {
     //MARK: Like shot
                     DribbbleServises.instance.likeShot(id: self.arrayOfCellData[indexPath.section].shotId)
@@ -125,8 +125,8 @@ class ShotVieweringVC: UITableViewController {
                     self.arrayOfCellData[indexPath.section].likeButtonState = false
                     cell.likeButtonOutlet.isSelected = false
                 }
-            }else{
-                print("signUP First")
+            } else {
+                
                 self.showAlert(title: "Warning", message: "Authorization is required")
                 
             }

@@ -44,9 +44,9 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
     let animatedImage = input["animated"].bool
     let id = input["id"].stringValue
 
-    DribbbleServises.instance.checkIfShotIsLiked(id: id) { isLiked in
-        likeButtonState = isLiked
-    }
+//    DribbbleServises.instance.checkIfShotIsLiked(id: id) { isLiked in
+//        likeButtonState = isLiked
+//    }
     
     let item = DribbbleFeedItem(shotUrl: shotImageURL, likes: likesCountUInt, likeButtonState: likeButtonState, authorName: authorName, authotUsername: authorUsername, authorAvatarURL: authorAvatarURL, description: description, title: title, animated: animatedImage!, shotId: id)
 

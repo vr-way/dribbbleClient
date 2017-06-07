@@ -391,13 +391,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2i-5q-sBe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2i-5q-sBe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92146831750869751" green="0.92162626981735229" blue="0.92145836353302002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="DPo-Uk-dB5">
+                                <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="DPo-Uk-dB5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="356"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlG-0O-a8g">
                                             <rect key="frame" x="5" y="5" width="365" height="336"/>
@@ -453,7 +452,7 @@
                                                         <action selector="selecterAction:" destination="XKJ-x8-Y2F" eventType="valueChanged" id="f2D-C0-c2H"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Simpler is Better&quot;. I'knjjkkbkjbjkhbkhjbhbhbhbhbhbhbm specia" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIl-eb-vgk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIl-eb-vgk">
                                                     <rect key="frame" x="15" y="188" width="335" height="94"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -486,7 +485,6 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.92146831750869751" green="0.92162626981735229" blue="0.92145836353302002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="hlG-0O-a8g" firstAttribute="centerX" secondItem="DPo-Uk-dB5" secondAttribute="centerX" id="6OM-di-qUI"/>
                                         <constraint firstItem="hlG-0O-a8g" firstAttribute="top" secondItem="DPo-Uk-dB5" secondAttribute="top" constant="5" id="VEu-VP-xNi"/>
                                         <constraint firstAttribute="bottom" secondItem="hlG-0O-a8g" secondAttribute="bottom" constant="15" id="a4N-fM-AXo"/>
                                         <constraint firstItem="hlG-0O-a8g" firstAttribute="leading" secondItem="DPo-Uk-dB5" secondAttribute="leading" constant="5" id="hda-bk-LsR"/>
@@ -517,6 +515,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e2i-5q-sBe" firstAttribute="top" secondItem="2YY-YV-sID" secondAttribute="top" id="Edx-OC-crL"/>
+                            <constraint firstItem="e2i-5q-sBe" firstAttribute="leading" secondItem="2YY-YV-sID" secondAttribute="leading" id="hGT-Gx-3uw"/>
+                            <constraint firstAttribute="trailing" secondItem="e2i-5q-sBe" secondAttribute="trailing" id="j6T-H3-Lx1"/>
+                            <constraint firstAttribute="bottom" secondItem="e2i-5q-sBe" secondAttribute="bottom" id="kTL-Xg-rC2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="u0d-62-oen"/>
                     <connections>

@@ -159,10 +159,10 @@ extension ShotCommentingVC: UITableViewDelegate {
 //MARK: Table view datasource 
 extension ShotCommentingVC: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //TODO: return your view
-        return nil
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        //TODO: return your view
+//        return nil
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -228,7 +228,7 @@ extension ShotCommentingVC : UITextFieldDelegate {
     func scrollDown(delay: Int){
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
             let lastIndex = IndexPath(row: (self.arrayOfCommentsData.count) - 1, section: 0)
-            print(lastIndex)
+           // print(lastIndex)
             if  !(self.arrayOfCommentsData.isEmpty){
                 self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
             }
