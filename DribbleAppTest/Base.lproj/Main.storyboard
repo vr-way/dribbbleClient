@@ -220,10 +220,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
+                                            <action selector="textFieldTouchDown:" destination="OM1-Im-1N1" eventType="touchDown" id="C2G-cc-hR3"/>
+                                            <action selector="txtFldEdittingChange:" destination="OM1-Im-1N1" eventType="editingChanged" id="ZHY-4U-Ppx"/>
                                             <outlet property="delegate" destination="OM1-Im-1N1" id="RDc-qc-gOy"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1e-tU-fIv">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1e-tU-fIv">
                                         <rect key="frame" x="325" y="5" width="40" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Post"/>
@@ -278,6 +280,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="QCs-CR-NPd" id="QLV-5M-ZQE"/>
                         <outlet property="commentTextField" destination="pQ4-rL-dn8" id="oaA-VI-JUB"/>
+                        <outlet property="postButton" destination="o1e-tU-fIv" id="2It-6E-pRh"/>
                         <outlet property="sortCommentConstrain" destination="BbQ-u7-WCx" id="MOC-kx-Tly"/>
                         <outlet property="tableView" destination="nbJ-BV-08v" id="NER-q3-Vz5"/>
                     </connections>

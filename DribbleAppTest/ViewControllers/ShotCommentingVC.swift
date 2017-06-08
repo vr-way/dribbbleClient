@@ -7,6 +7,8 @@ class ShotCommentingVC: UIViewController  {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var postButton: UIButton!
+    
     
     @IBAction func reverseButtonPressed(_ sender: UIButton) {
         self.arrayOfCommentsData.reverse()
@@ -16,12 +18,18 @@ class ShotCommentingVC: UIViewController  {
         self.view.endEditing(true)
         postComment(comment: commentTextField.text)
         self.commentTextField.text = ""
-
+    }
+    
+    @IBAction func txtFldEdittingChange(_ sender: UITextField) { postButton.isEnabled = true }
+    @IBAction func textFieldTouchDown(_ sender: UITextField) {
+        if !DribbbleServises.instance.isUserSignUp{
+            showAlert(title: "Warning!", message: "The authorization is required. User must also be a player or team." , button: "OK")
+        }
     }
     
     
     fileprivate var arrayOfCommentsData = [DribbleFeedComments ]()
-    fileprivate let alertNoComments = UIAlertController(title: "Ooups", message: "There isn`t any commets to this shot.", preferredStyle: UIAlertControllerStyle.alert)
+   // fileprivate let alertNoComments = UIAlertController(title: "Ooups", message: "There isn`t any commets to this shot.", preferredStyle: UIAlertControllerStyle.alert)
 
     fileprivate struct Const {
         static let identifier = "ShotCommentId"
@@ -37,11 +45,11 @@ class ShotCommentingVC: UIViewController  {
         title = "Comments"
         
         
-        alertNoComments.addAction(UIAlertAction(title: "Be first!", style: UIAlertActionStyle.default, handler: nil))
+      //  alertNoComments.addAction(UIAlertAction(title: "Be first!", style: UIAlertActionStyle.default, handler: nil))
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
-        //commentTextField.addTarget(self, action: "myTargetFunction:", for: UIControlEvents.touchDown)
+       
         
 
         self.commentTextField.delegate = self
@@ -64,63 +72,58 @@ class ShotCommentingVC: UIViewController  {
   
 
     var pageNum = 0
-    var loadMoreStatus = false
+    var firstEnter = true
 
     func fetchComments(shotID: String, scrollDown: Bool) {
 
-        if !loadMoreStatus {
-            loadMoreStatus = true
-            pageNum += 1
-           
-            
             DribbbleServises.instance.getComment(shotId: shotID, page: pageNum, successCallback: { [weak self] comments in
                 guard let `self` = self else { return }
-
                 self.arrayOfCommentsData += comments
-                    if self.arrayOfCommentsData.isEmpty {
-                        print("array is empty")
-                        self.present(self.alertNoComments, animated: true, completion: nil)
-                    }
                 self.tableView.reloadData()
-                if scrollDown{
-                     self.scrollDown(delay: 300)
-                }
 
-                self.loadMoreStatus = false
+                if comments.count == 12 { self.pageNum += 1; self.fetchComments(shotID: shotID, scrollDown: scrollDown)}
+                
+                if scrollDown { self.scrollDown(delay: 300)}
+                
+                if self.firstEnter && self.arrayOfCommentsData.isEmpty {
+                    self.firstEnter = false
+                    self.showAlert(title: "Ooups", message: "There isn`t any commets to this shot.", button: "Be first!")
+                }
                 }, errorCallback: { error in
                     print("error")
             })
 
-        }
-        
-       
     }
 
     
     
     func postComment(comment: String?){
         if comment != nil {
-            //print(comment!)
            
             DribbbleServises.instance.postComment(comment: comment!, id: MySingleton.shared.shotId){ [weak self] result in
                 switch (result) {
                 case .success:
-                    print("reload list")
                     self?.pageNum = 0
                     self?.arrayOfCommentsData = [DribbleFeedComments ]()
                     self?.fetchComments(shotID: MySingleton.shared.shotId, scrollDown: true)
                     
                    
-                   
                 case .error(let error):
-                    //TODO: show alert view for user
+                
                     DribbleAPIErrorHandler.handleDribbleError(error: error)
                 }
             }
         }
     }
     
-    
+    func showAlert(title : String, message: String, button: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: button, style: .default) { action in
+            // perhaps use action.title here
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+ 
     
     
     
@@ -134,35 +137,15 @@ extension ShotCommentingVC: UITableViewDelegate {
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
         commentTextField.resignFirstResponder()
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        //super.scrollViewDidScroll(scrollView)
-//        
-//        let currentOffset = scrollView.contentOffset.y
-//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-//        let deltaOffset = maximumOffset - currentOffset
-//        
-//        if deltaOffset <= 0 {
-//           // loadShots(page: pageNum)
-//            fetchComments(shotID: MySingleton.shared.shotId)
-//            
-//        }
-//        
-//    }
-
     
 }
 
 //MARK: Table view datasource 
 extension ShotCommentingVC: UITableViewDataSource {
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        //TODO: return your view
-//        return nil
-//    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -189,6 +172,11 @@ extension ShotCommentingVC: UITableViewDataSource {
 //MARK: UITextFieldDelegate && KeyBoard is Shown
 extension ShotCommentingVC : UITextFieldDelegate {
     
+    
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return DribbbleServises.instance.isUserSignUp
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -228,7 +216,6 @@ extension ShotCommentingVC : UITextFieldDelegate {
     func scrollDown(delay: Int){
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
             let lastIndex = IndexPath(row: (self.arrayOfCommentsData.count) - 1, section: 0)
-           // print(lastIndex)
             if  !(self.arrayOfCommentsData.isEmpty){
                 self.tableView.scrollToRow(at: lastIndex, at: UITableViewScrollPosition.bottom, animated: true)
             }
