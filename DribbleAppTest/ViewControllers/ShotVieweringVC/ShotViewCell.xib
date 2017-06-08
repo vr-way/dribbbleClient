@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,20 +22,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O5x-pA-rxY">
                         <rect key="frame" x="0.0" y="0.0" width="467" height="363"/>
                     </imageView>
-                    <view alpha="0.55000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fve-iR-XJc" userLabel="View title" customClass="ShotViewCell" customModule="DribbleAppTest" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="313" width="467" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description of the shot not more than two strings" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="TDF-nh-vVX">
-                                <rect key="frame" x="15" y="0.0" width="437" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnH-gK-vif" userLabel="View Pink">
                         <rect key="frame" x="0.0" y="363" width="467" height="50"/>
                         <subviews>
@@ -117,14 +104,34 @@
                             <constraint firstAttribute="bottom" secondItem="kGa-R8-mf7" secondAttribute="bottom" constant="7" id="wEL-RX-KjU"/>
                         </constraints>
                     </view>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="TDF-nh-vVX">
+                        <rect key="frame" x="0.0" y="313" width="467" height="50"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="QAI-UQ-Nu0"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Description of the shot not more than two strings">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" metaFont="system" size="14"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="TnH-gK-vif" firstAttribute="top" secondItem="TDF-nh-vVX" secondAttribute="bottom" id="6Fh-PC-fGG"/>
                     <constraint firstAttribute="bottom" secondItem="O5x-pA-rxY" secondAttribute="bottom" constant="50" id="7Xp-3t-qFn"/>
+                    <constraint firstItem="TDF-nh-vVX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="DDY-qr-g5o"/>
                     <constraint firstAttribute="trailing" secondItem="O5x-pA-rxY" secondAttribute="trailing" id="FIo-5X-9UO"/>
                     <constraint firstItem="O5x-pA-rxY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IFj-ft-olB"/>
                     <constraint firstAttribute="trailing" secondItem="TnH-gK-vif" secondAttribute="trailing" id="M8H-D9-ovi"/>
                     <constraint firstItem="O5x-pA-rxY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="f5S-Jr-zz0"/>
                     <constraint firstItem="TnH-gK-vif" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jRM-K4-Bir"/>
+                    <constraint firstItem="TDF-nh-vVX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="wuA-ZN-vDr"/>
                     <constraint firstAttribute="bottom" secondItem="TnH-gK-vif" secondAttribute="bottom" id="yHl-8w-r7Z"/>
                 </constraints>
             </tableViewCellContentView>
@@ -136,7 +143,6 @@
                 <outlet property="likeCounter" destination="rJa-Lr-DQI" id="7xP-qq-gn5"/>
                 <outlet property="mainLabelText" destination="btK-4g-1Qe" id="db2-gq-UYN"/>
                 <outlet property="mainViewImage" destination="O5x-pA-rxY" id="vva-yp-zeq"/>
-                <outlet property="viewTitleCancas" destination="Fve-iR-XJc" id="naw-VI-mZH"/>
             </connections>
             <point key="canvasLocation" x="-36.5" y="-77"/>
         </tableViewCell>

@@ -16,8 +16,6 @@ class ShotViewCell: UITableViewCell {
 
     @IBOutlet weak var authorName: UILabel!
 
-    @IBOutlet weak var viewTitleCancas: ShotViewCell!
-
     @IBAction func likeButton2(_ sender: UIButton) { onLikeTap!() }
     
     @IBOutlet weak var likeButtonOutlet: UIButton!
@@ -68,7 +66,7 @@ class ShotViewCell: UITableViewCell {
         authorAvatar.sd_setImage(with: data.authorAvatarURL)
         mainViewImage.sd_setImage(with: data.shotUrl, placeholderImage: UIImage(named: "shotIsLoading"))
         
-        self.viewTitleCancas.isHidden = data.description.characters.count == 0 ? true : false
+       self.descriptionUnderText.isHidden = data.description.characters.count == 0 ? true : false
         
         
         if DribbbleServises.instance.isUserSignUp {
