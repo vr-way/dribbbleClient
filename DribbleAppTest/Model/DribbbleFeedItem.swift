@@ -28,7 +28,7 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
     let title = input["title"].stringValue
     let description = input["description"].stringValue
     let likesCount = input["likes_count"].stringValue
-    var likeButtonState = false
+    let likeButtonState = false
     let authorUsername = input["user", "username"].stringValue
     let authorName = input["user", "name"].stringValue
     let authorAvatarURL: URL = URL(string:   input["user", "avatar_url"].stringValue)!
