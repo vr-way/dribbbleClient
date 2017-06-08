@@ -398,7 +398,7 @@
 				TargetAttributes = {
 					EE0E36561EA2925000E55ABB = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 9G444XGCQ7;
+						DevelopmentTeam = D8U3HNMNV7;
 						ProvisioningStyle = Automatic;
 					};
 					EE0E366A1EA2925000E55ABB = {
@@ -801,11 +801,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				DEVELOPMENT_TEAM = 9G444XGCQ7;
+				DEVELOPMENT_TEAM = D8U3HNMNV7;
 				INFOPLIST_FILE = DribbleAppTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTest;
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -818,11 +818,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				DEVELOPMENT_TEAM = 9G444XGCQ7;
+				DEVELOPMENT_TEAM = D8U3HNMNV7;
 				INFOPLIST_FILE = DribbleAppTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleAppTest;
+				PRODUCT_BUNDLE_IDENTIFIER = VRWAY.DribbleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
