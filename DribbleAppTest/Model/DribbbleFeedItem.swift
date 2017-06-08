@@ -2,14 +2,7 @@ import Foundation
 import SwiftyJSON
 import SDWebImage
 
-class MySingleton {
-    static let shared = MySingleton()
-    var animateFlag = false
-    var HDImageFlag =  true
-    var settingsButtonPressed = false
-    var shotId = ""
-    var userNickname = ""
-}
+
 
 struct DribbbleFeedItem {
 
@@ -34,7 +27,7 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
 
     let title = input["title"].stringValue
     let description = input["description"].stringValue
-    var likesCount = input["likes_count"].stringValue
+    let likesCount = input["likes_count"].stringValue
     var likeButtonState = false
     let authorUsername = input["user", "username"].stringValue
     let authorName = input["user", "name"].stringValue
@@ -50,7 +43,7 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
     
     let item = DribbbleFeedItem(shotUrl: shotImageURL, likes: likesCountUInt, likeButtonState: likeButtonState, authorName: authorName, authotUsername: authorUsername, authorAvatarURL: authorAvatarURL, description: description, title: title, animated: animatedImage!, shotId: id)
 
-    if MySingleton.shared.animateFlag {
+    if buffer.shared.animateFlag {
         return item
     } else {
         return item.animated ? nil :  item
@@ -60,9 +53,9 @@ func mapDribbbleFeedItem(_ input: JSON) -> DribbbleFeedItem? {
 
 func getHDImage(input: JSON) -> URL {
     var url: URL
-//MARK:   добавил возможность выбора качства изображения.  если режим  hidpi   включен, то показываются ТОЛЬКО  картинки в HD,  там где нет картинки в высоком качестве показывается заглушка ( легко исправляется на  качество normal), когда режим выключен показываются картинки самого низкого качества
+    //MARK:    Added the ability to select image quality. If the hidpi mode is on, then only pictures in HD are shown, where there is no picture in high quality, a stub is displayed (it is easily corrected for normal quality), when the mode is turned off, pictures of the lowest quality are displayed
     
-    if MySingleton.shared.HDImageFlag {
+    if buffer.shared.HDImageFlag {
 
     url = input["images", "hidpi"] != JSON.null ? URL(string: input["images", "hidpi"].stringValue)! : URL(string: "http://www.daaddelhi.org/imperia/md/content/newdelhi/b_no_image_icon.gif")!
     } else {

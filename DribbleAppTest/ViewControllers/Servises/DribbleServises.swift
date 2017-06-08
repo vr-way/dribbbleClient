@@ -16,19 +16,13 @@ protocol DribbbleServisesProtocol {
 
 
 
-private struct Config {
+struct Config {
     static let ACCESS_TOKEN = "9fa5d5a325bf433f2b0dd348a18c7e629740fb123d091970be44e88fe7e5559b"
     static let CONSUMER_KEY  = "14e6ca1e128d872a73309a71751416f2e36b513060e63a90e0301b35501124c6"
     static let CONSUMER_SECRET = "66f0d84616538c0537014e70c13e84d6703d262782b89cc8ea4a8f8d83250112"
     
-    
     static let SHOT_URL = "https://api.dribbble.com/v1/shots"
     static let POPULAR_URL = SHOT_URL + "?sort="
-    static let RECENT_URL = SHOT_URL + "?sort=recent"
-    static let GIF_URL = SHOT_URL + "?sort=&list=animated?per_page=3"
-    static let REBOUNDS_URL = SHOT_URL + "?sort=&list=rebounds"
-    static let TEAMS_URL = SHOT_URL + "?sort=&list=teams"
-
 }
 
 class DribbbleServises: DribbbleServisesProtocol {
@@ -57,7 +51,7 @@ class DribbbleServises: DribbbleServisesProtocol {
 
     func getComment(shotId: String, page: Int, successCallback: @escaping ([DribbleFeedComments]) -> Void, errorCallback: @escaping (Error) -> Void ) {
 
-      let url = Config.SHOT_URL + "/" + shotId + "/comments"  + "?page=" + String(page) + "&access_token=" + Config.ACCESS_TOKEN
+      let url = Config.SHOT_URL + "/" + shotId + "/comments?page=" + String(page) + "&access_token=" + Config.ACCESS_TOKEN
 
         getJSON (url: url) { response in
             switch response {
@@ -180,14 +174,8 @@ class DribbbleServises: DribbbleServisesProtocol {
                 self.isUserSignUp = true
                 self.keychain.set(credential.oauthToken, forKey:"outhUserTokenKeyChain")
                 self.keychain.set(true, forKey:"UserSignUpKey")
-                
-                
-                
                  
                 callback(Result.success())
-             
-            
-                
                 
                 authVC.dismiss(animated: true, completion: nil)
                 

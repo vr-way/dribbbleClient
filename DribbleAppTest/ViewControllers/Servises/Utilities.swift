@@ -31,7 +31,7 @@ func timePastFrom (dateFromJSON: String) -> String {
         
         hours  = Int((dateFromString?.timeIntervalSinceNow)!) / 3600
         hours += secondsFromGMT / 3600
-        minutes = Int((dateFromString?.timeIntervalSinceNow)!) / 60  //+ (secondsFromGMT / 3600)
+        minutes = Int((dateFromString?.timeIntervalSinceNow)!) / 60  
         minutes += secondsFromGMT / 60
       
         
@@ -105,7 +105,14 @@ func singIn(flag: Bool){
 }
 
 
-
+class buffer {
+    static let shared = buffer()
+    var animateFlag = false
+    var HDImageFlag =  true
+    var settingsButtonPressed = false
+    var shotId = ""
+    var userNickname = ""
+}
 
 
 

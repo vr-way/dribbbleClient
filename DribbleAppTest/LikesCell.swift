@@ -6,7 +6,9 @@ import SDWebImage
 class LikesCell: UITableViewCell {
 
     @IBOutlet weak var userAvatar: UIImageView!
+    
     @IBOutlet weak var userName: UILabel!
+    
     @IBOutlet weak var label: UILabel!
 
     func setData(_ data: DribbbleSwift.UserLikesDS ) {

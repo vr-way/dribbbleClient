@@ -38,6 +38,8 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -48,10 +50,9 @@ class ProfileViewController: UIViewController {
         let nib2 = UINib(nibName: Const.xibNameLikes, bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: Const.identifierLikes)
 
-        ConfigDS.setAccessToken("9fa5d5a325bf433f2b0dd348a18c7e629740fb123d091970be44e88fe7e5559b")
+        ConfigDS.setAccessToken(Config.ACCESS_TOKEN)
 
-       
-        userNickname = MySingleton.shared.userNickname
+        userNickname = buffer.shared.userNickname
         viewAppearance()
         updateDataBio()
         fetchFollowers(userNick: userNickname, page: followersPageNum)
@@ -66,19 +67,15 @@ class ProfileViewController: UIViewController {
   
 
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //super.scrollViewDidScroll(scrollView)
 
         let currentOffset = tableView.contentOffset.y
         let maximumOffset = tableView.contentSize.height - scrollView.frame.size.height
         let deltaOffset = maximumOffset - currentOffset
 
         if deltaOffset <= scrollView.frame.size.height * 2 {
-            if segmentalFlag == 0 {
-                fetchFollowers(userNick: userNickname, page: followersPageNum)
-            } else {
-                fetchLikes(userNick: userNickname, page: likesPageNum)
-            }
-
+            
+            segmentalFlag == 0 ? fetchFollowers(userNick: userNickname, page: followersPageNum) : fetchLikes(userNick: userNickname, page: likesPageNum)
+            
         }
 
     }
@@ -94,20 +91,17 @@ class ProfileViewController: UIViewController {
             self.userAvatar.sd_setImage(with: URL(string: (user?.avatar_url!)!))
             self.userPRO.isHidden = (user?.pro)! ? false : true
             
-            //TODO: update table view header frame base on user data
+           
             let bioSize = CGSize(width: self.userBio.bounds.width, height: CGFloat.greatestFiniteMagnitude)
             if let bio = user?.bio {
+                
                 let resaultSize = (bio as NSString).boundingRect(with: bioSize, options: [.usesLineFragmentOrigin], attributes: nil, context: nil)
-             // print(resaultSize.height)
                 let height = resaultSize.height * 2  + 300
                 let width = self.viewFrame.frame.width
                 self.viewFrame.frame = CGRect(x: 0, y: 0, width: width, height: height)
 
               
             }
-            
-            
-            //TODO UPDATE FRAME OF VIEWTITLE
             
         }
 
@@ -168,9 +162,10 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 50
     }
     
+  
 }
 
 

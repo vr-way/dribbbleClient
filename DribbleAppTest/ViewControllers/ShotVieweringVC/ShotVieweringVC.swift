@@ -5,45 +5,23 @@ import UIKit
 class ShotVieweringVC: UITableViewController {
 
     @IBOutlet weak var settingsButton: UIBarButtonItem!
+    
     @IBOutlet weak var signUpButton: UIBarButtonItem!
 
-    @IBAction func signUpButtonPressed(_ sender: UIBarButtonItem) {
-        stateOFSignUpButton = !stateOFSignUpButton
-        if stateOFSignUpButton {
-            DribbbleServises.instance.doOAuthDribbble(){[weak self] result in
-                switch (result) {
-                case .success:
-                     self?.tableView.reloadData()
-                case .error( _): break
-                }
-            }
-           
-        } else {
+    @IBAction func signUpButtonPressed(_ sender: UIBarButtonItem) { singInButton() }
     
-            let shotVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-            self.navigationController?.pushViewController(shotVC, animated: true)
-            singIn(flag: false)
-        }
-    }
-    
-    
+    @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) { settingsTapHandler() }
+       
+
+  
+    var arrayOfCellData: [DribbbleFeedItem] = []
+  
     
     var stateOFSignUpButton: Bool = true {
         didSet{
             self.signUpButton.title = stateOFSignUpButton ? "Sign out" : "Sign in"
         }
     }
-   
-    @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
-        settingsTapHandler()
-    }
-
-  
-    var arrayOfCellData: [DribbbleFeedItem] = []
-    var loadMoreStatus = false
-    var pageNum = 1
-    
- 
 
     fileprivate struct Const {
         static let identifier = "cellIdentifier"
@@ -53,12 +31,7 @@ class ShotVieweringVC: UITableViewController {
     
     
     override func viewDidLoad() {
-     
-        //stateOFSignUpButton = DribbbleServises.instance.isUserSignUp
-      
-        
-        
-        
+
         let nib = UINib(nibName: "ShotViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Const.identifier)
         loadShots(page: 1)
@@ -70,13 +43,10 @@ class ShotVieweringVC: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-       
-            
         stateOFSignUpButton = DribbbleServises.instance.isUserSignUp
-        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,7 +58,7 @@ class ShotVieweringVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-     return 1
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,10 +66,11 @@ class ShotVieweringVC: UITableViewController {
         let cell =  tableView.dequeueReusableCell(withIdentifier: Const.identifier, for: indexPath) as! ShotViewCell
         let dataItem = arrayOfCellData[indexPath.section]
         cell.setData(dataItem)
+        
         cell.onLabelTap = { _ in
             let shotCommentsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC")
             self.navigationController?.pushViewController(shotCommentsVC, animated: true)
-            MySingleton.shared.userNickname = self.arrayOfCellData[indexPath.section].authotUsername
+            buffer.shared.userNickname = self.arrayOfCellData[indexPath.section].authotUsername
         }
 
         cell.onLikeTap = { _ in
@@ -126,14 +97,11 @@ class ShotVieweringVC: UITableViewController {
                     cell.likeButtonOutlet.isSelected = false
                 }
             } else {
-                
                 self.showAlert(title: "Warning", message: "Authorization is required")
-                
             }
        
         }
    
-        
         return cell
     }
 
@@ -144,7 +112,6 @@ class ShotVieweringVC: UITableViewController {
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //super.scrollViewDidScroll(scrollView)
 
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
@@ -162,20 +129,13 @@ class ShotVieweringVC: UITableViewController {
         let shotCommentsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShotVC")
         navigationController?.pushViewController(shotCommentsVC, animated: true)
         let shotId =  arrayOfCellData[indexPath.section].shotId
-        MySingleton.shared.shotId = shotId
+        buffer.shared.shotId = shotId
 
     }
 
     private var settingsVC: PopUpViewController?
     private func settingsTapHandler(){
-//        if let settings = settingsVC {
-//            settings.dismiss(animated: true)
-//            settingsVC = nil
-//            return
-//        }
-//        
-        
-        
+
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpId") as! PopUpViewController
         
         popOverVC.modalTransitionStyle = .crossDissolve
@@ -185,12 +145,9 @@ class ShotVieweringVC: UITableViewController {
         settingsVC = popOverVC
     }
     
-    func refreshInvoked(_ sender: AnyObject) {
-        sender.beginRefreshing()
-        pageNum = 0
-        loadShots(page: 1)
-        sender.endRefreshing()
-    }
+ 
+    var loadMoreStatus = false
+    var pageNum = 1
     
     func loadShots(page: Int) {
         if !loadMoreStatus {
@@ -207,13 +164,39 @@ class ShotVieweringVC: UITableViewController {
         }
     }
     
+    
+    func refreshInvoked(_ sender: AnyObject) {
+        sender.beginRefreshing()
+        pageNum = 0
+        loadShots(page: 1)
+        sender.endRefreshing()
+    }
+    
     func showAlert(title : String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
-            // perhaps use action.title here
         })
         self.present(alert, animated: true, completion: nil)
     }
 
+    func singInButton() {
+        
+        stateOFSignUpButton = !stateOFSignUpButton
+        if stateOFSignUpButton {
+            DribbbleServises.instance.doOAuthDribbble(){[weak self] result in
+                switch (result) {
+                case .success:
+                    self?.tableView.reloadData()
+                case .error( _): break
+                }
+            }
+            
+        } else {
+            
+            let shotVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+            self.navigationController?.pushViewController(shotVC, animated: true)
+            singIn(flag: false)
+        }
 
+    }
 }

@@ -18,33 +18,27 @@ class ShotViewCell: UITableViewCell {
 
     @IBOutlet weak var viewTitleCancas: ShotViewCell!
 
-    @IBAction func likeButton2(_ sender: UIButton) {
-        
-         onLikeTap!()
-         //likeCounter.text = String(Int(likeCounter.text!)! + 1)
-      
-        
-    }
+    @IBAction func likeButton2(_ sender: UIButton) { onLikeTap!() }
+    
     @IBOutlet weak var likeButtonOutlet: UIButton!
 
+    
+    
     var onLabelTap: (() -> Void)?
     var onLikeTap: (() -> Void)?
-    
     private var likeReq: DataRequest?
 
 
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // likeButtonOutlet.setBackgroundImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
+        selectionStyle = .none
         
         if likeButtonOutlet != nil {
             likeButtonOutlet.setBackgroundImage(#imageLiteral(resourceName: "like"), for: UIControlState.normal)
             likeButtonOutlet.setBackgroundImage(#imageLiteral(resourceName: "like_pressed"), for: UIControlState.selected)
         }
-        selectionStyle = .none
+        
         
         if (authorName) != nil {
             self.authorName.isUserInteractionEnabled = true
@@ -62,13 +56,9 @@ class ShotViewCell: UITableViewCell {
 
     }
     
-    func doubleTapped(_ sender: UITapGestureRecognizer) {
+    func doubleTapped(_ sender: UITapGestureRecognizer) { onLabelTap!() }
         
-        //TODO: передать переменную data.author
-        onLabelTap!()
-        }
-
-    
+        
     func setData(_ data: DribbbleFeedItem) {
         
         mainLabelText.text = data.title

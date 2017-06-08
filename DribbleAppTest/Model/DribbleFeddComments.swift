@@ -15,7 +15,6 @@ struct DribbleFeedComments {
 func mapDribbleFeedComments(_ input: JSON) -> DribbleFeedComments? {
 
     let id = input["id"].stringValue
-
     let body = input["body"].stringValue
     let date = input["created_at"].stringValue
     let avatarUrl = URL(string: input["user", "avatar_url"].stringValue)

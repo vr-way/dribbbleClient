@@ -13,11 +13,12 @@ import SDWebImage
 class FollowersCell: UITableViewCell {
 
     @IBOutlet weak var userAvatar: UIImageView!
+    
     @IBOutlet weak var userName: UILabel!
+    
     @IBOutlet weak var numOfLikes: UILabel!
 
     func setData(_ data: DribbbleSwift.FollowersDS ) {
-       // print( data)
         userAvatar.sd_setImage(with: URL(string: data.follower.avatar_url))
         userName.text = data.follower.name!
         numOfLikes.text = "Number of likes: \(data.follower.likes_count!)"

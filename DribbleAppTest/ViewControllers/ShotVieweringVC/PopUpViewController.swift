@@ -7,17 +7,22 @@ class PopUpViewController: UIViewController {
     @IBOutlet var backgroundView: UIView!
     
     @IBOutlet weak var viewContainer: UIView!
+    
     @IBOutlet weak var hdSegmentalControl: UISegmentedControl!
+    
     @IBOutlet weak var gifSegmentalControl: UISegmentedControl!
+    
     @IBAction func closePopUp(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-        MySingleton.shared.settingsButtonPressed = false
+        buffer.shared.settingsButtonPressed = false
     }
+    
     @IBAction func hdSegmentalControlAction(_ sender: UISegmentedControl) {
-        MySingleton.shared.HDImageFlag = hdSegmentalControl.selectedSegmentIndex == 0 ? true : false
+        buffer.shared.HDImageFlag = hdSegmentalControl.selectedSegmentIndex == 0 ? true : false
     }
+    
     @IBAction func gifSegmentalControlAction(_ sender: UISegmentedControl) {
-        MySingleton.shared.animateFlag = gifSegmentalControl.selectedSegmentIndex == 0 ? true : false
+        buffer.shared.animateFlag = gifSegmentalControl.selectedSegmentIndex == 0 ? true : false
     }
     
 
@@ -30,8 +35,8 @@ class PopUpViewController: UIViewController {
         self.view.backgroundColor = semi
         self.viewContainer.layer.cornerRadius = 10
 
-        hdSegmentalControl.selectedSegmentIndex =  MySingleton.shared.HDImageFlag == true ? 0 : 1
-        gifSegmentalControl.selectedSegmentIndex =  MySingleton.shared.animateFlag == true ? 0 : 1
+        hdSegmentalControl.selectedSegmentIndex =  buffer.shared.HDImageFlag == true ? 0 : 1
+        gifSegmentalControl.selectedSegmentIndex =  buffer.shared.animateFlag == true ? 0 : 1
         
         
         self.backgroundView.isUserInteractionEnabled = true
@@ -44,7 +49,5 @@ class PopUpViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-
-   
 
 }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
+//MARK: Show Shot view  VC if user is authorized and login VC if not.
         if DribbbleServises.instance.keychain.get("outhUserTokenKeyChain") != nil{
             DribbbleServises.instance.oauthUserToken = DribbbleServises.instance.keychain.get("outhUserTokenKeyChain")!
             DribbbleServises.instance.isUserSignUp = DribbbleServises.instance.keychain.getBool("UserSignUpKey")!
