@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        if   DribbbleServises.instance.keychain.getBool("UserSignUpKey") != nil  {
+        if  DribbbleServises.instance.keychain.getBool("UserSignUpKey") != nil && DribbbleServises.instance.keychain.getBool("UserSignUpKey")! {
          window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainShotController")
         } else {
          window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DefaultRootVC")
