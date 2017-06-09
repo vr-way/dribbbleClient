@@ -23,14 +23,8 @@
 		EE236CE61EE5D07000E16A82 /* DribbleAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE236CE51EE5D07000E16A82 /* DribbleAPIErrorHandler.swift */; };
 		EE236CE81EE5E6ED00E16A82 /* AuthentificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */; };
 		EE2FA1EE1EDABA4C00679CB8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */; };
-		EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */; };
 		EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */ = {isa = PBXBuildFile; fileRef = EED089291EA49B4A0087FC34 /* dribbble content */; };
-		EED0892C1EA4DC4D0087FC34 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0892B1EA4DC4C0087FC34 /* avatar.png */; };
-		EED0892E1EA63D9E0087FC34 /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0892D1EA63D9E0087FC34 /* Login.png */; };
 		EED089381EA64B420087FC34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED089371EA64B420087FC34 /* LoginViewController.swift */; };
-		EED0893A1EA651B60087FC34 /* fon.png in Resources */ = {isa = PBXBuildFile; fileRef = EED089391EA651B60087FC34 /* fon.png */; };
-		EED0893C1EA654C20087FC34 /* userIco.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0893B1EA654C20087FC34 /* userIco.png */; };
-		EED0893E1EA658540087FC34 /* passwordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EED0893D1EA658540087FC34 /* passwordIcon.png */; };
 		EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0893F1EA674F60087FC34 /* DribbleServises.swift */; };
 		EED089451EA6771F0087FC34 /* DribbbleFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */; };
 		EEF9BEA51ED3094B00AAB5E8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9BEA41ED3094B00AAB5E8 /* ProfileViewController.swift */; };
@@ -90,14 +84,8 @@
 		EE236CE51EE5D07000E16A82 /* DribbleAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleAPIErrorHandler.swift; path = Servises/DribbleAPIErrorHandler.swift; sourceTree = "<group>"; };
 		EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthentificationVC.swift; path = Servises/AuthentificationVC.swift; sourceTree = "<group>"; };
 		EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Servises/Utilities.swift; sourceTree = "<group>"; };
-		EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = FPAHRIq0DCo.jpg; path = Assets.xcassets/FPAHRIq0DCo.jpg; sourceTree = "<group>"; };
 		EED089291EA49B4A0087FC34 /* dribbble content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "dribbble content"; sourceTree = "<group>"; };
-		EED0892B1EA4DC4C0087FC34 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar.png; path = Assets.xcassets/avatar.png; sourceTree = "<group>"; };
-		EED0892D1EA63D9E0087FC34 /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Login.png; path = Assets.xcassets/Login.png; sourceTree = "<group>"; };
 		EED089371EA64B420087FC34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginVC/LoginViewController.swift; sourceTree = "<group>"; };
-		EED089391EA651B60087FC34 /* fon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fon.png; path = Assets.xcassets/fon.png; sourceTree = "<group>"; };
-		EED0893B1EA654C20087FC34 /* userIco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = userIco.png; path = Assets.xcassets/userIco.png; sourceTree = "<group>"; };
-		EED0893D1EA658540087FC34 /* passwordIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = passwordIcon.png; path = Assets.xcassets/passwordIcon.png; sourceTree = "<group>"; };
 		EED0893F1EA674F60087FC34 /* DribbleServises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleServises.swift; path = Servises/DribbleServises.swift; sourceTree = "<group>"; };
 		EED089441EA6771F0087FC34 /* DribbbleFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbbleFeedItem.swift; path = Model/DribbbleFeedItem.swift; sourceTree = "<group>"; };
 		EEF9BEA41ED3094B00AAB5E8 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ViewControllers/ProfileVieweringVC/ProfileViewController.swift; sourceTree = "<group>"; };
@@ -282,12 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				EED089291EA49B4A0087FC34 /* dribbble content */,
-				EED089261EA3B61C0087FC34 /* FPAHRIq0DCo.jpg */,
-				EED089391EA651B60087FC34 /* fon.png */,
-				EED0892D1EA63D9E0087FC34 /* Login.png */,
-				EED0893B1EA654C20087FC34 /* userIco.png */,
-				EED0893D1EA658540087FC34 /* passwordIcon.png */,
-				EED0892B1EA4DC4C0087FC34 /* avatar.png */,
 			);
 			name = assets;
 			sourceTree = "<group>";
@@ -440,17 +422,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EED089271EA3B61C0087FC34 /* FPAHRIq0DCo.jpg in Resources */,
 				EEFD8BAB1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib in Resources */,
-				EED0892C1EA4DC4D0087FC34 /* avatar.png in Resources */,
-				EED0893C1EA654C20087FC34 /* userIco.png in Resources */,
-				EED0893E1EA658540087FC34 /* passwordIcon.png in Resources */,
 				EE0E36651EA2925000E55ABB /* LaunchScreen.storyboard in Resources */,
-				EED0893A1EA651B60087FC34 /* fon.png in Resources */,
 				EE0E36621EA2925000E55ABB /* Assets.xcassets in Resources */,
 				EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */,
 				EE1FAA461ED583440039E624 /* FollowersCell.xib in Resources */,
-				EED0892E1EA63D9E0087FC34 /* Login.png in Resources */,
 				EE0E36961EA36A1B00E55ABB /* ShotViewCell.xib in Resources */,
 				EEF9BEAF1ED48B6C00AAB5E8 /* LikesCell.xib in Resources */,
 				EE0E36601EA2925000E55ABB /* Main.storyboard in Resources */,
