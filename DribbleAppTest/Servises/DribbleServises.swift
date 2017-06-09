@@ -84,7 +84,7 @@ class DribbbleServises: DribbbleServisesProtocol {
     
     func dislikeShot(id: String){
         if !oauthUserToken.isEmpty{
-            Alamofire.request("https://api.dribbble.com/v1/shots/\(id)/like?access_token=\(self.oauthUserToken)", method:.delete)
+             _ = Alamofire.request("https://api.dribbble.com/v1/shots/\(id)/like?access_token=\(self.oauthUserToken)", method:.delete)
            
         }
     }
