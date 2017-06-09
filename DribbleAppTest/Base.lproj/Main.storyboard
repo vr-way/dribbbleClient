@@ -285,8 +285,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ppk-yK-Mgg">
-                                <rect key="frame" x="0.0" y="0.0" width="376" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fonLogin" translatesAutoresizingMaskIntoConstraints="NO" id="Mbz-Hx-eY2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-xx-3Mu">
                                 <rect key="frame" x="97.5" y="510" width="180" height="60"/>
@@ -325,18 +325,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ppk-yK-Mgg" firstAttribute="leading" secondItem="cxN-UU-bpd" secondAttribute="leading" id="1lt-cQ-KuF"/>
+                            <constraint firstAttribute="trailing" secondItem="Mbz-Hx-eY2" secondAttribute="trailing" id="6Fi-zT-abG"/>
                             <constraint firstAttribute="bottom" secondItem="pRp-xx-3Mu" secondAttribute="bottom" constant="97" id="9oU-NQ-Rez"/>
+                            <constraint firstItem="Mbz-Hx-eY2" firstAttribute="leading" secondItem="cxN-UU-bpd" secondAttribute="leading" id="CDq-eJ-cRN"/>
                             <constraint firstItem="aWW-R6-WD8" firstAttribute="top" secondItem="pRp-xx-3Mu" secondAttribute="bottom" constant="1" id="DWI-GP-yvF"/>
+                            <constraint firstAttribute="bottom" secondItem="Mbz-Hx-eY2" secondAttribute="bottom" id="H1J-6w-awU"/>
                             <constraint firstItem="4hK-Oc-Nib" firstAttribute="leading" secondItem="cxN-UU-bpd" secondAttribute="leadingMargin" constant="24" id="Mmr-Vf-XX4"/>
                             <constraint firstItem="pRp-xx-3Mu" firstAttribute="centerX" secondItem="cxN-UU-bpd" secondAttribute="centerX" id="V31-Jb-9FF"/>
                             <constraint firstItem="pRp-xx-3Mu" firstAttribute="centerX" secondItem="4hK-Oc-Nib" secondAttribute="centerX" id="ewi-dl-NeC"/>
-                            <constraint firstItem="Ppk-yK-Mgg" firstAttribute="bottom" secondItem="ZY2-Ai-Dl8" secondAttribute="top" id="l6C-qN-OcJ"/>
                             <constraint firstItem="4hK-Oc-Nib" firstAttribute="top" secondItem="r7K-WU-LEg" secondAttribute="bottom" multiplier="0.5" constant="147" id="mh2-ja-6de"/>
                             <constraint firstItem="pRp-xx-3Mu" firstAttribute="centerX" secondItem="cxN-UU-bpd" secondAttribute="centerX" id="oYV-5y-u31"/>
-                            <constraint firstItem="Ppk-yK-Mgg" firstAttribute="top" secondItem="cxN-UU-bpd" secondAttribute="top" id="q4J-ZD-Oct"/>
+                            <constraint firstItem="Mbz-Hx-eY2" firstAttribute="top" secondItem="cxN-UU-bpd" secondAttribute="top" id="pWr-IA-Ass"/>
                             <constraint firstItem="pRp-xx-3Mu" firstAttribute="centerX" secondItem="aWW-R6-WD8" secondAttribute="centerX" id="qPz-qu-BkV"/>
-                            <constraint firstItem="pRp-xx-3Mu" firstAttribute="centerX" secondItem="Ppk-yK-Mgg" secondAttribute="centerX" id="u8S-9X-Pnj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="V0g-Ch-20X"/>
@@ -346,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsC-nV-aFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="36"/>
+            <point key="canvasLocation" x="1836" y="35.532233883058474"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="cXu-uf-CnX">
@@ -547,6 +547,6 @@
     </scenes>
     <resources>
         <image name="avatar.png" width="225" height="225"/>
-        <image name="fon.png" width="750" height="1334"/>
+        <image name="fonLogin" width="750" height="1334"/>
     </resources>
 </document>
