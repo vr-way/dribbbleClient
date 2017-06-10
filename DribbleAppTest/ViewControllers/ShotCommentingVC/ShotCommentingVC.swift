@@ -19,11 +19,7 @@ class ShotCommentingVC: UIViewController  {
     }
     @IBAction func txtFldEdittingChange(_ sender: UITextField) { postButton.isEnabled = true }
     
-    @IBAction func textFieldTouchDown(_ sender: UITextField) {
-        if !DribbbleServises.instance.isUserSignUp{
-            showAlert(title: "Warning!", message: "The authorization is required. User must also be a player or team." , button: "OK")
-        }
-    }
+  
     
     
     fileprivate var arrayOfCommentsData = [DribbleFeedComments ]()
@@ -64,7 +60,7 @@ class ShotCommentingVC: UIViewController  {
     
     
     
-    var pageNum = 0
+    var pageNum = 1
     var firstEnter = true
     
     func fetchComments(shotID: String, scrollDown: Bool) {
@@ -72,10 +68,11 @@ class ShotCommentingVC: UIViewController  {
         DribbbleServises.instance.getComment(shotId: shotID, page: pageNum, successCallback: { [weak self] comments in
             guard let `self` = self else { return }
             self.arrayOfCommentsData += comments
-            
+          
             
             if comments.count == 12 {
-                self.pageNum += 1; self.fetchComments(shotID: shotID, scrollDown: scrollDown)
+                self.pageNum += 1
+                self.fetchComments(shotID: shotID, scrollDown: scrollDown)
             } else {
                 self.tableView.reloadData()
             }
@@ -102,7 +99,7 @@ class ShotCommentingVC: UIViewController  {
             DribbbleServises.instance.postComment(comment: comment!, id: buffer.shared.shotId){ [weak self] result in
                 switch (result) {
                 case .success:
-                    self?.pageNum = 0
+                    self?.pageNum = 1
                     self?.arrayOfCommentsData = [DribbleFeedComments ]()
                     self?.fetchComments(shotID: buffer.shared.shotId, scrollDown: true)
                     
@@ -140,7 +137,7 @@ extension ShotCommentingVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if !self.noAnimateCells{
             let dergree: Double = 90
-            let rotationAngle = CGFloat(dergree * M_PI / 180)
+            let rotationAngle = CGFloat(dergree * Double.pi / 180)
             let rotationTransform = CATransform3DMakeRotation(rotationAngle, 1, 1, 0)
             
             cell.layer.transform = rotationTransform
@@ -187,6 +184,9 @@ extension ShotCommentingVC: UITableViewDataSource {
 extension ShotCommentingVC : UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if !DribbbleServises.instance.isUserSignUp{
+            showAlert(title: "Warning!", message: "The authorization is required. User must also be a player or team." , button: "OK")
+        }
         return DribbbleServises.instance.isUserSignUp
     }
     
