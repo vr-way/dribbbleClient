@@ -1,7 +1,7 @@
 import UIKit
 
 class ShotCommentingVC: UIViewController  {
-
+    
     @IBOutlet weak var sortCommentConstrain: NSLayoutConstraint!
     
     @IBOutlet weak var tableView: UITableView!
@@ -11,7 +11,7 @@ class ShotCommentingVC: UIViewController  {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var postButton: UIButton!
-
+    
     @IBAction func postButtonPressed(_ sender: UIButton) {
         self.view.endEditing(true)
         postComment(comment: commentTextField.text)
@@ -27,7 +27,7 @@ class ShotCommentingVC: UIViewController  {
     
     
     fileprivate var arrayOfCommentsData = [DribbleFeedComments ]()
-   
+    
     fileprivate struct Const {
         static let identifier = "ShotCommentId"
         static let cellNib = "ShotCell"
@@ -38,61 +38,67 @@ class ShotCommentingVC: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Comments"
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
-       
+        
         self.commentTextField.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
+        
         let nib = UINib(nibName: Const.xibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Const.identifier)
-
+        
         self.tableView.estimatedRowHeight = 40
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         let shotId = buffer.shared.shotId
         fetchComments(shotID: shotId, scrollDown: false)
         
-       
+        
     }
-
-
-  
-
+    
+    
+    
+    
     var pageNum = 0
     var firstEnter = true
-
-    func fetchComments(shotID: String, scrollDown: Bool) {
-
-            DribbbleServises.instance.getComment(shotId: shotID, page: pageNum, successCallback: { [weak self] comments in
-                guard let `self` = self else { return }
-                self.arrayOfCommentsData += comments
-                self.tableView.reloadData()
-
-                if comments.count == 12 { self.pageNum += 1; self.fetchComments(shotID: shotID, scrollDown: scrollDown)}
-                
-                if scrollDown { self.scrollDown(delay: 300)}
-                
-                if self.firstEnter && self.arrayOfCommentsData.isEmpty {
-                    self.firstEnter = false
-                    self.showAlert(title: "Ooups", message: "There isn`t any commets to this shot.", button: "Be first!")
-                }
-                }, errorCallback: { error in
-                    print("error")
-            })
-
-    }
-
     
+    func fetchComments(shotID: String, scrollDown: Bool) {
+        
+        DribbbleServises.instance.getComment(shotId: shotID, page: pageNum, successCallback: { [weak self] comments in
+            guard let `self` = self else { return }
+            self.arrayOfCommentsData += comments
+            
+            
+            if comments.count == 12 {
+                self.pageNum += 1; self.fetchComments(shotID: shotID, scrollDown: scrollDown)
+            } else {
+                self.tableView.reloadData()
+            }
+            
+            if scrollDown { self.scrollDown(delay: 300)}
+            
+            if self.firstEnter && self.arrayOfCommentsData.isEmpty {
+                self.firstEnter = false
+                self.showAlert(title: "Ooups", message: "There isn`t any commets to this shot.", button: "Be first!")
+            }
+            }, errorCallback: { error in
+                print("error")
+        })
+        
+    }
+    
+    var noAnimateCells = false
     
     func postComment(comment: String?){
+        
+        
         if comment != nil {
-           
+            
             DribbbleServises.instance.postComment(comment: comment!, id: buffer.shared.shotId){ [weak self] result in
                 switch (result) {
                 case .success:
@@ -101,7 +107,7 @@ class ShotCommentingVC: UIViewController  {
                     self?.fetchComments(shotID: buffer.shared.shotId, scrollDown: true)
                     
                 case .error(let error):
-                
+                    
                     DribbleAPIErrorHandler.handleDribbleError(error: error)
                 }
             }
@@ -115,7 +121,7 @@ class ShotCommentingVC: UIViewController  {
         })
         self.present(alert, animated: true, completion: nil)
     }
- 
+    
     
     
     
@@ -126,14 +132,27 @@ class ShotCommentingVC: UIViewController  {
 
 //MARK: Table view delegate
 extension ShotCommentingVC: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         commentTextField.resignFirstResponder()
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !self.noAnimateCells{
+            let dergree: Double = 90
+            let rotationAngle = CGFloat(dergree * M_PI / 180)
+            let rotationTransform = CATransform3DMakeRotation(rotationAngle, 1, 1, 0)
+            
+            cell.layer.transform = rotationTransform
+            
+            UIView.animate(withDuration: 0.2, delay: 0.02 * Double(indexPath.row),  animations: {
+                cell.layer.transform = CATransform3DIdentity
+            })
+        }
+    }
 }
 
-//MARK: Table view datasource 
+//MARK: Table view datasource
 extension ShotCommentingVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -150,9 +169,17 @@ extension ShotCommentingVC: UITableViewDataSource {
         if !arrayOfCommentsData.isEmpty {
             let dataItem = arrayOfCommentsData[indexPath.row]
             cell.setCommentData(dataItem)
+            
+            
         }
         return cell
     }
+    
+    
+    
+    
+    
+    
     
 }
 
@@ -182,19 +209,19 @@ extension ShotCommentingVC : UITextFieldDelegate {
     }
     
     func adjustingHeight(show: Bool, notification: Notification) {
+        noAnimateCells = true
+        var userInfo = notification.userInfo!
+        let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         
-            var userInfo = notification.userInfo!
-            let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        
-            let changeInHeight = (keyboardFrame.height) * (show ? 1 : -1)
-            self.bottomConstraint.constant += changeInHeight
-            UIView.animate(withDuration: 1) {
-                self.view.layoutIfNeeded()
-            }
+        let changeInHeight = (keyboardFrame.height) * (show ? 1 : -1)
+        self.bottomConstraint.constant += changeInHeight
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
         
         self.scrollDown(delay: 30)
     }
-        
+    
     
     func scrollDown(delay: Int){
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {

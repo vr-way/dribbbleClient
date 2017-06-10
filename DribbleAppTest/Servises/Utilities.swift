@@ -4,7 +4,7 @@ import UIKit
 func removeHtmlTags(string: String) -> String {
     
     var string = string; string = string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-    let characters = ["&#8217;": "'", "&#8220;": "“", "[&hellip;]": "...", "&#038;": "&", "&#8230;": "...", "&amp;": "&", "&quot;":"'"]
+    let characters = ["&#8217;": "'", "&#8220;": "“", "[&hellip;]": "...", "&#038;": "&", "&#8230;": "...", "&amp;": "&", "&quot;":"'", "&lt;":"<"]
     for (code, character) in characters {
         string = string.replacingOccurrences(of: code, with: character, options: .caseInsensitive, range: nil)
     }
@@ -26,14 +26,14 @@ func timePastFrom (dateFromJSON: String) -> String {
     var  dateFromString = dateFormatter.date(from: dateOfPost)
     var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     
-   
+    
     if dateFromString != nil {
         
         hours  = Int((dateFromString?.timeIntervalSinceNow)!) / 3600
         hours += secondsFromGMT / 3600
-        minutes = Int((dateFromString?.timeIntervalSinceNow)!) / 60  
+        minutes = Int((dateFromString?.timeIntervalSinceNow)!) / 60
         minutes += secondsFromGMT / 60
-      
+        
         
         if hours > 0 {
             return "Ooups, post from future ;)"
