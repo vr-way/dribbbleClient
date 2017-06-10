@@ -23,6 +23,7 @@
 		EE236CE61EE5D07000E16A82 /* DribbleAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE236CE51EE5D07000E16A82 /* DribbleAPIErrorHandler.swift */; };
 		EE236CE81EE5E6ED00E16A82 /* AuthentificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */; };
 		EE2FA1EE1EDABA4C00679CB8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */; };
+		EEB852201EEA8C8D000E79D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB8521F1EEA8C8D000E79D2 /* Default-568h@2x.png */; };
 		EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */ = {isa = PBXBuildFile; fileRef = EED089291EA49B4A0087FC34 /* dribbble content */; };
 		EED089381EA64B420087FC34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED089371EA64B420087FC34 /* LoginViewController.swift */; };
 		EED089401EA674F60087FC34 /* DribbleServises.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0893F1EA674F60087FC34 /* DribbleServises.swift */; };
@@ -84,6 +85,7 @@
 		EE236CE51EE5D07000E16A82 /* DribbleAPIErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleAPIErrorHandler.swift; path = Servises/DribbleAPIErrorHandler.swift; sourceTree = "<group>"; };
 		EE236CE71EE5E6ED00E16A82 /* AuthentificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthentificationVC.swift; path = Servises/AuthentificationVC.swift; sourceTree = "<group>"; };
 		EE2FA1ED1EDABA4C00679CB8 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Servises/Utilities.swift; sourceTree = "<group>"; };
+		EEB8521F1EEA8C8D000E79D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EED089291EA49B4A0087FC34 /* dribbble content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "dribbble content"; sourceTree = "<group>"; };
 		EED089371EA64B420087FC34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginVC/LoginViewController.swift; sourceTree = "<group>"; };
 		EED0893F1EA674F60087FC34 /* DribbleServises.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DribbleServises.swift; path = Servises/DribbleServises.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		EE0E364E1EA2925000E55ABB = {
 			isa = PBXGroup;
 			children = (
+				EEB8521F1EEA8C8D000E79D2 /* Default-568h@2x.png */,
 				EE0E36591EA2925000E55ABB /* DribbleAppTest */,
 				EE0E366E1EA2925000E55ABB /* DribbleAppTestTests */,
 				EE0E36791EA2925000E55ABB /* DribbleAppTestUITests */,
@@ -424,6 +427,7 @@
 			files = (
 				EEFD8BAB1ECDCA7F009A8F46 /* ShotCommentingViewCellTableViewCell.xib in Resources */,
 				EE0E36651EA2925000E55ABB /* LaunchScreen.storyboard in Resources */,
+				EEB852201EEA8C8D000E79D2 /* Default-568h@2x.png in Resources */,
 				EE0E36621EA2925000E55ABB /* Assets.xcassets in Resources */,
 				EED0892A1EA49B4A0087FC34 /* dribbble content in Resources */,
 				EE1FAA461ED583440039E624 /* FollowersCell.xib in Resources */,
